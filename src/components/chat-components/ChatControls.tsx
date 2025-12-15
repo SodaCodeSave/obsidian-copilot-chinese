@@ -399,7 +399,7 @@ export function ChatControls({
                   }}
                 >
                   <AlertTriangle className="tw-size-4" />
-                  强制重建Vault索引
+                  强制重建仓库索引
                 </DropdownMenuItem>
               </>
             )}

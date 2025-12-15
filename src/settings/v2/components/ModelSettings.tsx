@@ -29,7 +29,7 @@ export const ModelSettings: React.FC = () => {
         "displayName",
         "dimensions",
       ]),
-      name: `${model.name} (copy)`,
+      name: `${model.name} (副本)`,
     };
 
     const settingField: keyof CopilotSettings = isEmbeddingModel
@@ -83,12 +83,12 @@ export const ModelSettings: React.FC = () => {
       updatedModels[modelIndex] = updatedModel;
       updateSetting(settingField, updatedModels);
     } else {
-      new Notice("Could not find model to update");
-      logError("Could not find model to update:", originalModel);
+      new Notice("无法找到要更新的模型");
+      logError("无法找到要更新的模型:", originalModel);
     }
   };
 
-  // Handler for updates originating from the ModelTable itself (e.g., checkbox toggles)
+  // 处理来自ModelTable本身的更新（例如，复选框切换）
   const handleTableUpdate = (updatedModel: CustomModel) => {
     const updatedModels = settings.activeModels.map((m) =>
       m.name === updatedModel.name && m.provider === updatedModel.provider ? updatedModel : m
@@ -112,27 +112,27 @@ export const ModelSettings: React.FC = () => {
   };
 
   const handleRefreshChatModels = () => {
-    // Get all custom models (non-built-in models)
+    // 获取所有自定义模型（非内置模型）
     const customModels = settings.activeModels.filter((model) => !model.isBuiltIn);
 
-    // Create a new array with built-in models and custom models
+    // 创建包含内置模型和自定义模型的新数组
     const updatedModels = [...BUILTIN_CHAT_MODELS, ...customModels];
 
-    // Update the settings
+    // 更新设置
     updateSetting("activeModels", updatedModels);
-    new Notice("Chat models refreshed successfully");
+    new Notice("聊天模型刷新成功");
   };
 
   const handleRefreshEmbeddingModels = () => {
-    // Get all custom models (non-built-in models)
+    // 获取所有自定义模型（非内置模型）
     const customModels = settings.activeEmbeddingModels.filter((model) => !model.isBuiltIn);
 
-    // Create a new array with built-in models and custom models
+    // 创建包含内置模型和自定义模型的新数组
     const updatedModels = [...BUILTIN_EMBEDDING_MODELS, ...customModels];
 
-    // Update the settings
+    // 更新设置
     updateSetting("activeEmbeddingModels", updatedModels);
-    new Notice("Embedding models refreshed successfully");
+    new Notice("嵌入模型刷新成功");
   };
 
   const handleEditModel = (model: CustomModel, isEmbeddingModel: boolean = false) => {
@@ -152,10 +152,10 @@ export const ModelSettings: React.FC = () => {
           onUpdateModel={handleTableUpdate}
           onReorderModels={(newModels) => handleModelReorder(newModels)}
           onRefresh={handleRefreshChatModels}
-          title="Chat Models"
+          title="聊天模型"
         />
 
-        {/* model add dialog */}
+        {/* 添加模型对话框 */}
         <ModelAddDialog
           open={showAddDialog}
           onOpenChange={setShowAddDialog}
@@ -171,8 +171,8 @@ export const ModelSettings: React.FC = () => {
         <div className="tw-space-y-4">
           <SettingItem
             type="slider"
-            title="Conversation turns in context"
-            description="The number of previous conversation turns to include in the context. Default is 15 turns, i.e. 30 messages."
+            title="上下文对话轮数"
+            description="要包含在上下文中的之前对话轮数。默认是15轮，即30条消息。"
             value={settings.contextTurns}
             onChange={(value) => updateSetting("contextTurns", value)}
             min={1}
@@ -192,10 +192,10 @@ export const ModelSettings: React.FC = () => {
           onUpdateModel={handleEmbeddingModelUpdate}
           onReorderModels={(newModels) => handleModelReorder(newModels, true)}
           onRefresh={handleRefreshEmbeddingModels}
-          title="Embedding Models"
+          title="嵌入模型"
         />
 
-        {/* Embedding model add dialog */}
+        {/* 添加嵌入模型对话框 */}
         <ModelAddDialog
           open={showAddEmbeddingDialog}
           onOpenChange={setShowAddEmbeddingDialog}

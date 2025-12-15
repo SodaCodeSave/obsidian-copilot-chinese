@@ -745,7 +745,7 @@ const ChatInput: React.FC<ChatInputProps> = ({
                 onClick={() => onSendMessage()}
               >
                 <CornerDownLeft className="!tw-size-3" />
-                <span>{editMode ? "save" : "chat"}</span>
+                <span>{editMode ? "save" : "发送"}</span>
               </Button>
             </>
           )}
