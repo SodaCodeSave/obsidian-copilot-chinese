@@ -118,7 +118,7 @@ export const ChatButtons: React.FC<ChatButtonsProps> = ({
                 <Trash2 className="tw-size-4" />
               </Button>
             </TooltipTrigger>
-            <TooltipContent>Delete</TooltipContent>
+            <TooltipContent>删除</TooltipContent>
           </Tooltip>
         </>
       )}
