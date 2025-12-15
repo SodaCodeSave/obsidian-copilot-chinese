@@ -59,6 +59,7 @@ const CHAT_PROVIDER_CONSTRUCTORS = {
   [ChatModelProviders.MISTRAL]: ChatMistralAI,
   [ChatModelProviders.DEEPSEEK]: ChatDeepSeek,
   [ChatModelProviders.AMAZON_BEDROCK]: BedrockChatModel,
+  [ChatModelProviders.MODELSCOPE]: ChatOpenAI,
 } as const;
 
 type ChatProviderConstructMap = typeof CHAT_PROVIDER_CONSTRUCTORS;
@@ -94,6 +95,7 @@ export default class ChatModelManager {
     [ChatModelProviders.DEEPSEEK]: () => getSettings().deepseekApiKey,
     [ChatModelProviders.AMAZON_BEDROCK]: () => getSettings().amazonBedrockApiKey,
     [ChatModelProviders.SILICONFLOW]: () => getSettings().siliconflowApiKey,
+    [ChatModelProviders.MODELSCOPE]: () => getSettings().modelscopeApiKey,
   } as const;
 
   private constructor() {
@@ -297,7 +299,22 @@ export default class ChatModelManager {
         configuration: {
           baseURL: customModel.baseUrl,
           fetch: customModel.enableCors ? safeFetch : undefined,
-          defaultHeaders: { "dangerously-allow-browser": "true" },
+          defaultHeaders: { "dangerously-allow-browser": true },
+        },
+        ...this.getOpenAISpecialConfig(
+          modelName,
+          customModel.maxTokens ?? settings.maxTokens,
+          customModel.temperature ?? settings.temperature,
+          customModel
+        ),
+      },
+      [ChatModelProviders.MODELSCOPE]: {
+        modelName: modelName,
+        apiKey: await getDecryptedKey(customModel.apiKey || settings.modelscopeApiKey),
+        configuration: {
+          baseURL: customModel.baseUrl || ProviderInfo[ChatModelProviders.MODELSCOPE].host,
+          fetch: customModel.enableCors ? safeFetch : undefined,
+          defaultHeaders: { "dangerously-allow-browser": true },
         },
         ...this.getOpenAISpecialConfig(
           modelName,
@@ -506,6 +523,7 @@ export default class ChatModelManager {
           ChatModelProviders.MISTRAL,
           ChatModelProviders.DEEPSEEK,
           ChatModelProviders.SILICONFLOW,
+          ChatModelProviders.MODELSCOPE,
         ].includes(provider)
       ) {
         params.topP = customModel.topP;
@@ -526,6 +544,7 @@ export default class ChatModelManager {
           ChatModelProviders.MISTRAL,
           ChatModelProviders.DEEPSEEK,
           ChatModelProviders.SILICONFLOW,
+          ChatModelProviders.MODELSCOPE,
         ].includes(provider)
       ) {
         params.frequencyPenalty = customModel.frequencyPenalty;

@@ -68,6 +68,7 @@ export interface CopilotSettings {
   amazonBedrockApiKey: string;
   amazonBedrockRegion: string;
   siliconflowApiKey: string;
+  modelscopeApiKey: string;
   defaultChainType: ChainType;
   defaultModelKey: string;
   embeddingModelKey: string;

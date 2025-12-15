@@ -184,6 +184,7 @@ export enum ChatModelProviders {
   DEEPSEEK = "deepseek",
   COHEREAI = "cohereai",
   SILICONFLOW = "siliconflow",
+  MODELSCOPE = "modelscope",
 }
 
 export enum ModelCapability {
@@ -361,14 +362,14 @@ export const BUILTIN_CHAT_MODELS: CustomModel[] = [
     provider: ChatModelProviders.SILICONFLOW,
     enabled: false,
     isBuiltIn: false,
-    baseUrl: "https://api.siliconflow.com/v1",
+    baseUrl: "https://api.siliconflow.cn/v1",
   },
   {
     name: ChatModels.SILICONFLOW_DEEPSEEK_R1,
     provider: ChatModelProviders.SILICONFLOW,
     enabled: false,
     isBuiltIn: false,
-    baseUrl: "https://api.siliconflow.com/v1",
+    baseUrl: "https://api.siliconflow.cn/v1",
     capabilities: [ModelCapability.REASONING],
   },
 ];
@@ -384,6 +385,7 @@ export enum EmbeddingModelProviders {
   COPILOT_PLUS = "copilot-plus",
   COPILOT_PLUS_JINA = "copilot-plus-jina",
   SILICONFLOW = "siliconflow",
+  MODELSCOPE = "modelscope",
 }
 
 export enum EmbeddingModels {
@@ -482,7 +484,7 @@ export const BUILTIN_EMBEDDING_MODELS: CustomModel[] = [
     isBuiltIn: true,
     isEmbeddingModel: true,
     core: true,
-    baseUrl: "https://api.siliconflow.com/v1",
+    baseUrl: "https://api.siliconflow.cn/v1",
   },
 ];
 
@@ -510,6 +512,12 @@ export interface ProviderMetadata {
 
 // Unified provider information
 export const ProviderInfo: Record<Provider, ProviderMetadata> = {
+  [ChatModelProviders.MODELSCOPE]: {
+    label: "ModelScope",
+    host: "https://api-inference.modelscope.cn/v1/",
+    keyManagementURL: "https://modelscope.cn/my/myaccesstoken",
+    listModelURL: "https://api-inference.modelscope.cn/v1/models",
+  },
   [ChatModelProviders.OPENROUTERAI]: {
     label: "OpenRouter",
     host: "https://openrouter.ai/api/v1/",
@@ -567,10 +575,10 @@ export const ProviderInfo: Record<Provider, ProviderMetadata> = {
     testModel: ChatModels.COMMAND_R,
   },
   [ChatModelProviders.SILICONFLOW]: {
-    label: "SiliconFlow",
-    host: "https://api.siliconflow.com/v1",
-    keyManagementURL: "https://cloud.siliconflow.com/me/account/ak",
-    listModelURL: "https://api.siliconflow.com/v1/models",
+    label: "SiliconFlow (CN)",
+    host: "https://api.siliconflow.cn/v1",
+    keyManagementURL: "https://cloud.siliconflow.cn/me/account/ak",
+    listModelURL: "https://api.siliconflow.cn/v1/models",
     testModel: ChatModels.SILICONFLOW_DEEPSEEK_V3,
   },
   [ChatModelProviders.OLLAMA]: {
@@ -640,6 +648,7 @@ export const ProviderSettingsKeyMap: Record<SettingKeyProviders, keyof CopilotSe
   deepseek: "deepseekApiKey",
   "amazon-bedrock": "amazonBedrockApiKey",
   siliconflow: "siliconflowApiKey",
+  modelscope: "modelscopeApiKey",
 };
 
 export enum VAULT_VECTOR_STORE_STRATEGY {
@@ -759,6 +768,7 @@ export const DEFAULT_SETTINGS: CopilotSettings = {
   amazonBedrockApiKey: "",
   amazonBedrockRegion: "",
   siliconflowApiKey: "",
+  modelscopeApiKey: "",
   defaultChainType: ChainType.LLM_CHAIN,
   defaultModelKey: ChatModels.OPENROUTER_GEMINI_2_5_FLASH + "|" + ChatModelProviders.OPENROUTERAI,
   embeddingModelKey: EmbeddingModels.OPENAI_EMBEDDING_SMALL + "|" + EmbeddingModelProviders.OPENAI,

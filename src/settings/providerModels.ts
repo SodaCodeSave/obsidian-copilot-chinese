@@ -359,6 +359,7 @@ export interface ProviderResponseMap {
   [ChatModelProviders.COPILOT_PLUS]: null;
   [ChatModelProviders.AZURE_OPENAI]: null;
   [ChatModelProviders.AMAZON_BEDROCK]: unknown;
+  [ChatModelProviders.MODELSCOPE]: OpenAIModelResponse;
 }
 
 // Adapter type definition - converts provider-specific models to standard format
