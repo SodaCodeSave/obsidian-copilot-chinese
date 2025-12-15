@@ -231,10 +231,8 @@ function ApiKeyModalContent({ onClose }: ApiKeyModalContentProps) {
   return (
     <div className="tw-max-h-[600px] tw-overflow-y-auto tw-p-4 sm:tw-max-w-[500px]">
       <div className="tw-mb-4">
-        <h2 className="tw-text-xl tw-font-bold">AI Provider Settings</h2>
-        <p className="tw-text-sm tw-text-muted">
-          Configure your AI providers by adding their API keys.
-        </p>
+        <h2 className="tw-text-xl tw-font-bold">AI提供商设置</h2>
+        <p className="tw-text-sm tw-text-muted">通过添加API密钥来配置您的AI提供商。</p>
       </div>
 
       <div className="tw-space-y-6 tw-py-4">
@@ -278,7 +276,7 @@ function ApiKeyModalContent({ onClose }: ApiKeyModalContentProps) {
                           variant="secondary"
                           className="tw-flex tw-w-full tw-items-center tw-justify-center tw-gap-2 tw-whitespace-nowrap tw-px-4 tw-py-2"
                         >
-                          Add Model
+                          添加模型
                           {expandedProvider === item.provider ? (
                             <ChevronUp className="tw-ml-1 tw-size-4" />
                           ) : (
@@ -296,7 +294,7 @@ function ApiKeyModalContent({ onClose }: ApiKeyModalContentProps) {
                         rel="noopener noreferrer"
                         className="tw-text-[10px] tw-text-accent hover:tw-text-accent-hover sm:tw-text-xs"
                       >
-                        Get {getProviderLabel(item.provider)} Key
+                        获取 {getProviderLabel(item.provider)} 密钥
                       </a>
                     )}
                   </div>
@@ -306,8 +304,8 @@ function ApiKeyModalContent({ onClose }: ApiKeyModalContentProps) {
                     <CollapsibleContent className="tw-rounded-md tw-p-3">
                       <div className="tw-flex tw-flex-col tw-gap-2">
                         <FormField
-                          label="Model"
-                          description="Add the currently selected model to model List. After adding, please check the Model Tab."
+                          label="模型"
+                          description="将当前选择的模型添加到模型列表。添加后，请检查模型标签页。"
                         >
                           <div>
                             <div className="tw-flex tw-items-center tw-gap-2">
@@ -349,7 +347,7 @@ function ApiKeyModalContent({ onClose }: ApiKeyModalContentProps) {
                                       ? selectedModel.id
                                       : ""
                                   }
-                                  placeholder="Select Model"
+                                  placeholder="选择模型"
                                   disabled={
                                     !item.apiKey ||
                                     loadingProvider === item.provider ||
@@ -373,34 +371,31 @@ function ApiKeyModalContent({ onClose }: ApiKeyModalContentProps) {
                                   {verifyingModel ? (
                                     <Loader2 className="tw-mr-2 tw-size-4 tw-animate-spin" />
                                   ) : (
-                                    "Add"
+                                    "添加"
                                   )}
                                 </Button>
                               </div>
                             </div>
                             <div className="tw-mt-1 tw-text-xs">
                               {loadingProvider === item.provider && (
-                                <div className="tw-p-1 tw-text-muted">Loading models...</div>
+                                <div className="tw-p-1 tw-text-muted">正在加载模型...</div>
                               )}
                               {errorProvider === item.provider && (
                                 <div className="tw-p-1 tw-text-error">
-                                  Failed to load models.
+                                  加载模型失败。
                                   {modelsByProvider[item.provider] === null &&
-                                    " Check API Key or network."}
+                                    " 请检查API密钥或网络。"}
                                 </div>
                               )}
                               {modelsByProvider[item.provider] &&
                                 modelsByProvider[item.provider]!.length === 0 && (
-                                  <div className="tw-p-1 tw-text-muted">
-                                    No models available for this provider.
-                                  </div>
+                                  <div className="tw-p-1 tw-text-muted">该提供商没有可用模型。</div>
                                 )}
                               {modelsByProvider[item.provider] === undefined &&
                                 errorProvider !== item.provider &&
                                 loadingProvider !== item.provider && (
                                   <div className="tw-p-1 tw-text-muted">
-                                    Click to load models or expand to try again if API key was
-                                    changed.
+                                    点击加载模型，或如果API密钥已更改，请展开重试。
                                   </div>
                                 )}
                             </div>

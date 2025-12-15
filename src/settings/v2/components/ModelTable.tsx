@@ -106,12 +106,12 @@ const ModelTableHeader: React.FC<ModelTableHeaderProps> = ({ title, onRefresh, o
           className="tw-flex tw-items-center tw-gap-2"
         >
           <RefreshCw className="tw-size-2 md:tw-size-4" />
-          Refresh Built-ins
+          刷新内置模型
         </Button>
       )}
       <Button onClick={onAdd} variant="default" className="tw-flex tw-items-center tw-gap-2">
         <Plus className="tw-size-2 md:tw-size-4" />
-        Add Model
+        添加模型
       </Button>
     </div>
   </div>
@@ -167,7 +167,7 @@ const ModelCard: React.FC<ModelCardProps> = ({
   if (onEdit) {
     dropdownActions.push({
       icon: <PencilLine className="tw-size-4" />,
-      label: "Edit",
+      label: "编辑",
       onClick: onEdit,
     });
   }
@@ -175,7 +175,7 @@ const ModelCard: React.FC<ModelCardProps> = ({
   if (onCopy && !model.core) {
     dropdownActions.push({
       icon: <Copy className="tw-size-4" />,
-      label: "Copy",
+      label: "复制",
       onClick: onCopy,
     });
   }
@@ -183,7 +183,7 @@ const ModelCard: React.FC<ModelCardProps> = ({
   if (!model.core) {
     dropdownActions.push({
       icon: <Trash2 className="tw-size-4" />,
-      label: "Delete",
+      label: "删除",
       onClick: () => onDelete(getModelKeyFromModel(model)),
       variant: "destructive",
     });
@@ -193,7 +193,7 @@ const ModelCard: React.FC<ModelCardProps> = ({
     <div className="tw-flex tw-justify-around">
       {!model.isEmbeddingModel && (
         <div className="tw-flex tw-items-center tw-gap-2">
-          <span className="tw-text-sm">Enabled</span>
+          <span className="tw-text-sm">启用</span>
           <Checkbox
             checked={model.enabled}
             onCheckedChange={(checked: boolean) => onUpdateModel({ ...model, enabled: checked })}
@@ -229,7 +229,7 @@ const ModelCard: React.FC<ModelCardProps> = ({
           ? {
               icon: <Pencil className="tw-size-4" />,
               onClick: onEdit,
-              tooltip: "Edit Model",
+              tooltip: "编辑模型",
             }
           : undefined
       }
@@ -328,14 +328,14 @@ const DesktopSortableTableRow: React.FC<{
                 {onEdit && (
                   <DropdownMenuItem onClick={() => onEdit(model)}>
                     <PencilLine className="tw-mr-2 tw-size-4" />
-                    Edit
+                    编辑
                   </DropdownMenuItem>
                 )}
 
                 {onCopy && !model.core && (
                   <DropdownMenuItem onClick={() => onCopy(model)}>
                     <Copy className="tw-mr-2 tw-size-4" />
-                    Copy
+                    复制
                   </DropdownMenuItem>
                 )}
 
@@ -345,7 +345,7 @@ const DesktopSortableTableRow: React.FC<{
                     className="tw-text-error"
                   >
                     <Trash2 className="tw-mr-2 tw-size-4" />
-                    Delete
+                    删除
                   </DropdownMenuItem>
                 )}
               </DropdownMenuContent>
@@ -516,12 +516,12 @@ export const ModelTable: React.FC<ModelTableProps> = ({
               <TableHeader>
                 <TableRow>
                   <TableHead className="tw-w-6 tw-px-2"></TableHead>
-                  <TableHead className="tw-pl-0">Model</TableHead>
-                  <TableHead>Provider</TableHead>
-                  <TableHead className="tw-text-center">Capabilities</TableHead>
-                  {!isEmbeddingModel && <TableHead className="tw-text-center">Enable</TableHead>}
+                  <TableHead className="tw-pl-0">模型</TableHead>
+                  <TableHead>提供商</TableHead>
+                  <TableHead className="tw-text-center">能力</TableHead>
+                  {!isEmbeddingModel && <TableHead className="tw-text-center">启用</TableHead>}
                   <TableHead className="tw-text-center">CORS</TableHead>
-                  <TableHead className="tw-w-[100px] tw-text-center">Actions</TableHead>
+                  <TableHead className="tw-w-[100px] tw-text-center">操作</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody className="tw-relative">

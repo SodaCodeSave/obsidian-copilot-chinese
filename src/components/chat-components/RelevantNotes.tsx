@@ -169,7 +169,7 @@ function RelevantNote({
               <PlusCircle className="tw-size-4" />
             </Button>
           </TooltipTrigger>
-          <TooltipContent>Add to Chat</TooltipContent>
+          <TooltipContent>添加到聊天</TooltipContent>
         </Tooltip>
       </div>
 
@@ -188,19 +188,19 @@ function RelevantNote({
         <div className="tw-flex tw-items-center tw-gap-4 tw-border-[0px] tw-border-t tw-border-solid tw-border-border tw-px-4 tw-py-2 tw-text-xs tw-text-muted">
           {note.metadata.similarityScore != null && (
             <div className="tw-flex tw-items-center tw-gap-1">
-              <span>Similarity: {(note.metadata.similarityScore * 100).toFixed(1)}%</span>
+              <span>相似度：{(note.metadata.similarityScore * 100).toFixed(1)}%</span>
             </div>
           )}
           {note.metadata.hasOutgoingLinks && (
             <div className="tw-flex tw-items-center tw-gap-1">
               <FileOutput className="tw-size-4" />
-              <span>Outgoing links</span>
+              <span>出站链接</span>
             </div>
           )}
           {note.metadata.hasBacklinks && (
             <div className="tw-flex tw-items-center tw-gap-1">
               <FileInput className="tw-size-4" />
-              <span>Backlinks</span>
+              <span>反向链接</span>
             </div>
           )}
         </div>
@@ -231,7 +231,7 @@ function RelevantNotePopover({
             onClick={onAddToChat}
             className="tw-inline-flex tw-items-center tw-gap-2 tw-border tw-border-solid tw-border-border !tw-bg-transparent !tw-shadow-none hover:!tw-bg-interactive-hover"
           >
-            Add to Chat <PlusCircle className="tw-size-4" />
+            添加到聊天 <PlusCircle className="tw-size-4" />
           </button>
           <button
             onClick={(e) => {
@@ -240,7 +240,7 @@ function RelevantNotePopover({
             }}
             className="tw-inline-flex tw-items-center tw-gap-2 tw-border tw-border-solid tw-border-border !tw-bg-transparent !tw-shadow-none hover:!tw-bg-interactive-hover"
           >
-            Navigate to Note <ArrowRight className="tw-size-4" />
+            导航到笔记 <ArrowRight className="tw-size-4" />
           </button>
         </div>
       </PopoverContent>
@@ -286,15 +286,15 @@ export const RelevantNotes = memo(
         <Collapsible open={isOpen} onOpenChange={setIsOpen}>
           <div className="tw-flex tw-items-center tw-justify-between tw-pb-2 tw-pl-1">
             <div className="tw-flex tw-flex-1 tw-items-center tw-gap-2">
-              <span className="tw-font-semibold tw-text-normal">Relevant Notes</span>
+              <span className="tw-font-semibold tw-text-normal">相关笔记</span>
               <HelpTooltip
-                content="Relevance is a combination of semantic similarity and links."
+                content="相关性是语义相似度和链接的组合。"
                 contentClassName="tw-w-64"
                 buttonClassName="tw-size-4 tw-text-muted"
               />
 
               {!hasIndex && (
-                <HelpTooltip content="Note has not been indexed" side="bottom">
+                <HelpTooltip content="笔记尚未索引" side="bottom">
                   <TriangleAlert className="tw-size-4 tw-text-warning" />
                 </HelpTooltip>
               )}
@@ -306,7 +306,7 @@ export const RelevantNotes = memo(
                     <RefreshCcw className="tw-size-4" />
                   </Button>
                 </TooltipTrigger>
-                <TooltipContent side="bottom">Reindex Current Note</TooltipContent>
+                <TooltipContent side="bottom">重新索引当前笔记</TooltipContent>
               </Tooltip>
               {relevantNotes.length > 0 && (
                 <CollapsibleTrigger asChild>
@@ -324,9 +324,7 @@ export const RelevantNotes = memo(
           {relevantNotes.length === 0 && (
             <div className="tw-flex tw-max-h-12 tw-flex-wrap tw-gap-x-2 tw-gap-y-1 tw-overflow-y-hidden tw-px-1">
               <span className="tw-text-xs tw-text-muted">
-                {!hasIndex
-                  ? "No index available. Click refresh to build index."
-                  : "No relevant notes found"}
+                {!hasIndex ? "没有可用的索引。点击刷新构建索引。" : "未找到相关笔记"}
               </span>
             </div>
           )}

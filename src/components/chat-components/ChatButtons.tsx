@@ -52,7 +52,7 @@ export const ChatButtons: React.FC<ChatButtonsProps> = ({
                 {isCopied ? <Check className="tw-size-4" /> : <Copy className="tw-size-4" />}
               </Button>
             </TooltipTrigger>
-            <TooltipContent>Copy</TooltipContent>
+            <TooltipContent>复制</TooltipContent>
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
@@ -60,7 +60,7 @@ export const ChatButtons: React.FC<ChatButtonsProps> = ({
                 <PenSquare className="tw-size-4" />
               </Button>
             </TooltipTrigger>
-            <TooltipContent>Edit</TooltipContent>
+            <TooltipContent>编辑</TooltipContent>
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
@@ -68,7 +68,7 @@ export const ChatButtons: React.FC<ChatButtonsProps> = ({
                 <Trash2 className="tw-size-4" />
               </Button>
             </TooltipTrigger>
-            <TooltipContent>Delete</TooltipContent>
+            <TooltipContent>删除</TooltipContent>
           </Tooltip>
         </>
       ) : (
@@ -80,7 +80,7 @@ export const ChatButtons: React.FC<ChatButtonsProps> = ({
                   <LibraryBig className="tw-size-4" />
                 </Button>
               </TooltipTrigger>
-              <TooltipContent>Show Sources</TooltipContent>
+              <TooltipContent>显示来源</TooltipContent>
             </Tooltip>
           )}
           <Tooltip>
@@ -94,7 +94,7 @@ export const ChatButtons: React.FC<ChatButtonsProps> = ({
                 <TextCursorInput className="tw-size-4" />
               </Button>
             </TooltipTrigger>
-            <TooltipContent>Insert / Replace at cursor</TooltipContent>
+            <TooltipContent>在光标处插入/替换</TooltipContent>
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
@@ -110,7 +110,7 @@ export const ChatButtons: React.FC<ChatButtonsProps> = ({
                 <RotateCw className="tw-size-4" />
               </Button>
             </TooltipTrigger>
-            <TooltipContent>Regenerate</TooltipContent>
+            <TooltipContent>重新生成</TooltipContent>
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>

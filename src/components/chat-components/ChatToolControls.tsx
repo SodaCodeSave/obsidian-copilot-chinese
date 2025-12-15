@@ -108,9 +108,7 @@ const ChatToolControls: React.FC<ChatToolControlsProps> = ({
                 <Brain className="tw-size-4" />
               </Button>
             </TooltipTrigger>
-            <TooltipContent className="tw-px-1 tw-py-0.5">
-              Toggle autonomous agent mode
-            </TooltipContent>
+            <TooltipContent className="tw-px-1 tw-py-0.5">切换自主代理模式</TooltipContent>
           </Tooltip>
         )}
 
@@ -131,7 +129,7 @@ const ChatToolControls: React.FC<ChatToolControlsProps> = ({
                   <Database className="tw-size-4" />
                 </Button>
               </TooltipTrigger>
-              <TooltipContent className="tw-px-1 tw-py-0.5">Toggle vault search</TooltipContent>
+              <TooltipContent className="tw-px-1 tw-py-0.5">切换仓库搜索</TooltipContent>
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
@@ -147,7 +145,7 @@ const ChatToolControls: React.FC<ChatToolControlsProps> = ({
                   <Globe className="tw-size-4" />
                 </Button>
               </TooltipTrigger>
-              <TooltipContent className="tw-px-1 tw-py-0.5">Toggle web search</TooltipContent>
+              <TooltipContent className="tw-px-1 tw-py-0.5">切换网页搜索</TooltipContent>
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
@@ -166,9 +164,7 @@ const ChatToolControls: React.FC<ChatToolControlsProps> = ({
                   </span>
                 </Button>
               </TooltipTrigger>
-              <TooltipContent className="tw-px-1 tw-py-0.5">
-                Toggle composer (note editing)
-              </TooltipContent>
+              <TooltipContent className="tw-px-1 tw-py-0.5">切换编辑器（笔记编辑）</TooltipContent>
             </Tooltip>
           </>
         )}
@@ -191,7 +187,7 @@ const ChatToolControls: React.FC<ChatToolControlsProps> = ({
               >
                 <div className="tw-flex tw-items-center tw-gap-2">
                   <Brain className="tw-size-4" />
-                  <span>Autonomous Agent</span>
+                  <span>自主代理</span>
                 </div>
                 {autonomousAgentToggle && <Check className="tw-size-4" />}
               </DropdownMenuItem>
@@ -206,7 +202,7 @@ const ChatToolControls: React.FC<ChatToolControlsProps> = ({
                 >
                   <div className="tw-flex tw-items-center tw-gap-2">
                     <Database className="tw-size-4" />
-                    <span>Vault Search</span>
+                    <span>仓库搜索</span>
                   </div>
                   {vaultToggle && <Check className="tw-size-4" />}
                 </DropdownMenuItem>
@@ -216,7 +212,7 @@ const ChatToolControls: React.FC<ChatToolControlsProps> = ({
                 >
                   <div className="tw-flex tw-items-center tw-gap-2">
                     <Globe className="tw-size-4" />
-                    <span>Web Search</span>
+                    <span>网页搜索</span>
                   </div>
                   {webToggle && <Check className="tw-size-4" />}
                 </DropdownMenuItem>
@@ -229,7 +225,7 @@ const ChatToolControls: React.FC<ChatToolControlsProps> = ({
                       <Sparkles className="tw-size-2" />
                       <Pen className="tw-size-3" />
                     </span>
-                    <span>Composer</span>
+                    <span>编辑器</span>
                   </div>
                   {composerToggle && <Check className="tw-size-4" />}
                 </DropdownMenuItem>
@@ -245,7 +241,7 @@ const ChatToolControls: React.FC<ChatToolControlsProps> = ({
                 >
                   <div className="tw-flex tw-items-center tw-gap-2">
                     <Database className="tw-size-4" />
-                    <span>Vault Search</span>
+                    <span>仓库搜索</span>
                   </div>
                 </DropdownMenuItem>
                 <DropdownMenuItem

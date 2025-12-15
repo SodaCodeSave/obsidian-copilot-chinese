@@ -82,16 +82,16 @@ export const CopilotPlusSettings: React.FC = () => {
       <section className="tw-flex tw-flex-col tw-gap-4">
         <div className="tw-flex tw-items-center tw-py-4">
           <Badge variant="secondary" className="tw-text-accent">
-            Plus Required
+            需要 Plus
           </Badge>
         </div>
         <div className="tw-flex tw-flex-col tw-gap-4">
-          <div className="tw-pt-4 tw-text-xl tw-font-semibold">Autonomous Agent</div>
+          <div className="tw-pt-4 tw-text-xl tw-font-semibold">自主代理</div>
 
           <SettingItem
             type="switch"
-            title="Enable Autonomous Agent"
-            description="Enable autonomous agent mode in Plus chat. The AI will reason step-by-step and decide which tools to use automatically, improving response quality for complex queries."
+            title="启用自主代理"
+            description="在Plus聊天中启用自主代理模式。AI将逐步推理并自动决定使用哪些工具，提高复杂查询的响应质量。"
             checked={settings.enableAutonomousAgent}
             onCheckedChange={(checked) => {
               updateSetting("enableAutonomousAgent", checked);
@@ -104,12 +104,12 @@ export const CopilotPlusSettings: React.FC = () => {
             </>
           )}
 
-          <div className="tw-pt-4 tw-text-xl tw-font-semibold">Memory (experimental)</div>
+          <div className="tw-pt-4 tw-text-xl tw-font-semibold">记忆（实验性）</div>
 
           <SettingItem
             type="text"
-            title="Memory Folder Name"
-            description="Specify the folder where memory data is stored."
+            title="记忆文件夹名称"
+            description="指定存储记忆数据的文件夹。"
             value={settings.memoryFolderName}
             onChange={(value) => {
               updateSetting("memoryFolderName", value);
@@ -119,8 +119,8 @@ export const CopilotPlusSettings: React.FC = () => {
 
           <SettingItem
             type="switch"
-            title="Reference Recent Conversation"
-            description="When enabled, Copilot references your recent conversation history to provide more contextually relevant responses. All history data is stored locally in your vault."
+            title="引用最近对话"
+            description="启用后，Copilot将引用您的最近对话历史记录，提供更相关的上下文响应。所有历史数据都存储在您的Vault本地。"
             checked={settings.enableRecentConversations}
             onCheckedChange={(checked) => {
               updateSetting("enableRecentConversations", checked);
@@ -130,8 +130,8 @@ export const CopilotPlusSettings: React.FC = () => {
           {settings.enableRecentConversations && (
             <SettingItem
               type="slider"
-              title="Max Recent Conversations"
-              description="Number of recent conversations to remember for context. Higher values provide more context but may slow down responses."
+              title="最大最近对话数"
+              description="用于上下文的最近对话数量。值越高，提供的上下文越多，但可能会减慢响应速度。"
               min={10}
               max={50}
               step={1}
@@ -142,8 +142,8 @@ export const CopilotPlusSettings: React.FC = () => {
 
           <SettingItem
             type="switch"
-            title="Reference Saved Memories"
-            description="When enabled, Copilot can access memories that you explicitly asked it to remember. Use this to store important facts, preferences, or context for future conversations."
+            title="引用保存的记忆"
+            description="启用后，Copilot可以访问您明确要求它记住的记忆。使用此功能存储重要事实、偏好或未来对话的上下文。"
             checked={settings.enableSavedMemory}
             onCheckedChange={(checked) => {
               updateSetting("enableSavedMemory", checked);
@@ -151,9 +151,9 @@ export const CopilotPlusSettings: React.FC = () => {
           />
 
           <div className="tw-pt-4 tw-text-xl tw-font-semibold">
-            Autocomplete
+            自动补全
             <span className="tw-ml-2 tw-text-sm tw-font-normal tw-text-muted">
-              (service temporarily unavailable, will be back soon)
+              (服务暂时不可用，即将恢复)
             </span>
           </div>
 
@@ -161,12 +161,10 @@ export const CopilotPlusSettings: React.FC = () => {
             <>
               <SettingItem
                 type="switch"
-                title="Sentence Autocomplete"
+                title="句子自动补全"
                 description={
                   <div className="tw-flex tw-items-center tw-gap-1.5">
-                    <span className="tw-leading-none">
-                      Enable AI-powered sentence autocomplete suggestions while typing
-                    </span>
+                    <span className="tw-leading-none">启用AI驱动的句子自动补全建议（打字时）</span>
                   </div>
                 }
                 checked={settings.enableAutocomplete}
@@ -181,8 +179,8 @@ export const CopilotPlusSettings: React.FC = () => {
 
               <SettingItem
                 type="switch"
-                title="Word Completion"
-                description="Suggest completions for partially typed words based on your vault's content. Requires at least 3 characters to trigger."
+                title="单词补全"
+                description="根据您的Vault内容为部分输入的单词提供补全建议。至少需要3个字符才能触发。"
                 checked={settings.enableWordCompletion}
                 onCheckedChange={(checked) => {
                   if (isAutocompleteTemporarilyDisabled) {
@@ -195,8 +193,8 @@ export const CopilotPlusSettings: React.FC = () => {
 
               <SettingItem
                 type="custom"
-                title="Word Index Management"
-                description="Rebuild the word index to include new words from your vault. The index is automatically built when the plugin loads."
+                title="单词索引管理"
+                description="重建单词索引以包含Vault中的新单词。索引会在插件加载时自动构建。"
                 disabled={isAutocompleteTemporarilyDisabled}
               >
                 <Button
@@ -205,24 +203,21 @@ export const CopilotPlusSettings: React.FC = () => {
                   className="tw-flex tw-items-center tw-gap-2"
                 >
                   <RefreshCw className={cn("tw-size-4", isRefreshing && "tw-animate-spin")} />
-                  {isRefreshing ? "Rebuilding..." : "Refresh Word Index"}
+                  {isRefreshing ? "正在重建..." : "刷新单词索引"}
                 </Button>
               </SettingItem>
 
               <SettingItem
                 type="custom"
-                title="Autocomplete Accept Suggestion Key"
+                title="自动补全接受建议键"
                 description={
                   <div className="tw-flex tw-items-center tw-gap-1.5">
-                    <span className="tw-leading-none">
-                      The key used to accept autocomplete suggestions
-                    </span>
+                    <span className="tw-leading-none">用于接受自动补全建议的按键</span>
                     <HelpTooltip
                       content={
                         <div className="tw-flex tw-max-w-96 tw-flex-col tw-gap-2">
                           <div className="tw-text-sm tw-text-muted">
-                            Select the key you want to use for accepting suggestions. Default is
-                            &quot;Tab&quot;.
+                            选择您要用于接受建议的按键。默认是 &quot;Tab&quot;。
                           </div>
                         </div>
                       }
@@ -241,7 +236,7 @@ export const CopilotPlusSettings: React.FC = () => {
                       className="tw-w-[180px]"
                       disabled={isAutocompleteTemporarilyDisabled}
                     >
-                      <SelectValue placeholder="Select key" />
+                      <SelectValue placeholder="选择按键" />
                     </SelectTrigger>
                     <SelectContent>
                       {keyOptions.map((option) => (
@@ -259,7 +254,7 @@ export const CopilotPlusSettings: React.FC = () => {
                       className="tw-h-8 tw-text-xs"
                       disabled={isAutocompleteTemporarilyDisabled}
                     >
-                      Reset to Default
+                      重置为默认值
                     </Button>
                   )}
                 </div>
@@ -267,8 +262,8 @@ export const CopilotPlusSettings: React.FC = () => {
 
               <SettingItem
                 type="switch"
-                title="Allow Additional Context"
-                description="Allow the AI to access relevant notes to provide more relevant suggestions. When off, the AI can only see the current note context."
+                title="允许额外上下文"
+                description="允许AI访问相关笔记以提供更相关的建议。关闭时，AI只能看到当前笔记上下文。"
                 checked={settings.allowAdditionalContext}
                 onCheckedChange={(checked) => {
                   if (isAutocompleteTemporarilyDisabled) {

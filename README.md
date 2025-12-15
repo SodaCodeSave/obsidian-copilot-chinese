@@ -1,7 +1,9 @@
 <h1 align="center">Copilot for Obsidian</h1>
 
+**注意：此仓库为非官方汉化仓库，遇到问题请去原仓库反馈**
+
 <h2 align="center">
-The Ultimate AI Assistant for Your Second Brain
+你的第二大脑，终极AI助手
 </h2>
 
 <p align="center">
@@ -10,332 +12,329 @@ The Ultimate AI Assistant for Your Second Brain
 </p>
 
 <p align="center">
-  <a href="https://www.obsidiancopilot.com/en/docs">Documentation</a> |
-  <a href="https://www.youtube.com/@loganhallucinates">Youtube</a> |
-  <a href="https://github.com/logancyang/obsidian-copilot/issues/new?template=bug_report.md">Report Bug</a> |
-  <a href="https://github.com/logancyang/obsidian-copilot/issues/new?template=feature_request.md">Request Feature</a>
+  <a href="https://www.obsidiancopilot.com/en/docs">文档</a> |
+  <a href="https://www.youtube.com/@loganhallucinates">YouTube</a> |
+  <a href="https://github.com/logancyang/obsidian-copilot/issues/new?template=bug_report.md">报告Bug</a> |
+  <a href="https://github.com/logancyang/obsidian-copilot/issues/new?template=feature_request.md">请求功能</a>
 </p>
 
 <p align="center">
-  <a href="https://example.com](https://obsidian.md/blog/2024-goty-winners/">
-    <img src="./images/reward-banner.svg" alt="Reward Banner" width="400"/>
+  <a href="https://obsidian.md/blog/2024-goty-winners/">
+    <img src="./images/reward-banner.svg" alt="奖励横幅" width="400"/>
   </a>
 </p>
 
+## 是什么
 
-## The What
+_Copilot for Obsidian_ 是你的库内AI助手，具有基于聊天的库搜索、网页和YouTube支持、强大的上下文处理能力，以及在Obsidian高度可定制工作区中不断扩展的智能代理功能 - 同时将你的数据置于**你的**控制之下。
 
-*Copilot for Obsidian* is your in‑vault AI assistant with chat-based vault search, web and YouTube support, powerful context processing, and ever-expanding agentic capabilities within Obsidian's highly customizable workspace - all while keeping your data under **your** control.
+## 为什么
 
-## The Why
-Today's AI giants want **you trapped**: your data on their servers, prompts locked to their models, and switching costs that keep you paying. When they change pricing, shut down features, or terminate your account, you lose everything you built.
+如今的AI巨头希望**你被困住**：你的数据在他们的服务器上，提示词锁定在他们的模型中，切换成本让你不断付费。当他们更改定价、关闭功能或终止你的账户时，你会失去所有建立的东西。
 
-We are building the opposite. Our goal is to create a portable agentic experience with no provider lock-in. **Data is always yours.** Use whatever LLM you like. Imagine that a brand new model drops, you run it on your own hardware, and it already knows about you (*long-term memory*), knows how to run *the same commands and tools* you have defined over time (as just markdown files), and becomes the thought partner and assistant that you *own*. This is AI that grows with you, not a subscription you're hostage to.
+我们正在构建相反的东西。我们的目标是创建一个没有供应商锁定的可移植智能代理体验。**数据始终属于你**。使用任何你喜欢的LLM。想象一下，一个全新的模型发布了，你在自己的硬件上运行它，它已经了解你（_长期记忆_），知道如何运行你随时间定义的*相同命令和工具*（仅作为markdown文件），并成为你*拥有*的思维伙伴和助手。这是与你一起成长的AI，而不是你被 hostage的订阅服务。
 
-This is the future we believe in. If you share this vision, please support this project!
+这是我们相信的未来。如果你认同这个愿景，请支持这个项目！
 
-## Key Features
+## 关键特性
 
-- **🔒 Your data is 100% yours**: Local search and storage, and full control of your data if you use self-hosted models.
-- **🧠 Bring Your Own Model**: Tap any OpenAI-compatible or local model to uncover insights, spark connections, and create content. 
-- **🖼️ Multimedia understanding**: Drop in webpages, YouTube videos, images, PDFs, EPUBS, or real-time web search for quick insights.
-- **🔍 Smart Vault Search**: Search your vault with chat, no setup required. Embeddings are optional. Copilot delivers results right away.
-- **✍️ Composer and Quick Commands**: Interact with your writing with chat, apply changes with 1 click.
-- **🗂️ Project Mode**: Create AI-ready context based on folders and tags. Think NotebookLM but inside your vault!
-- **🤖 Agent Mode (Plus)**: Unlock an autonomous agent with built-in tool calling. No commands needed. Copilot automatically triggers vault, web searches or any other relevant tool when relevant.
+- **🔒 你的数据100%属于你**：本地搜索和存储，如果你使用自托管模型，完全控制你的数据。
+- **🧠 自带模型**：使用任何OpenAI兼容或本地模型来发现见解、激发联系并创建内容。
+- **🖼️ 多媒体理解**：支持网页、YouTube视频、图像、PDF、EPUB或实时网络搜索，快速获取见解。
+- **🔍 智能库搜索**：通过聊天搜索你的库，无需设置。嵌入是可选的。Copilot立即提供结果。
+- **✍️ 编辑器和快速命令**：通过聊天与你的写作互动，一键应用更改。
+- **🗂️ 项目模式**：基于文件夹和标签创建AI就绪上下文。想象一下NotebookLM，但在你的库内！
+- **🤖 代理模式（Plus）**：解锁具有内置工具调用功能的自主代理。无需命令。Copilot在相关时自动触发库、网络搜索或任何其他相关工具。
 
 <p align="center">
-  <em>Copilot's Agent can call the proper tools on its own upon your request.</em>
+  <em>Copilot的代理可以根据你的请求自行调用适当的工具。</em>
 </p>
 <p align="center">
-  <img src="./images/product-ui-screenshot.png" alt="Product UI screenshot" width="800"/>
+  <img src="./images/product-ui-screenshot.png" alt="产品UI截图" width="800"/>
 </p>
 
-## Table of Contents
+## 目录
 
-- [Get Started](#get-started)
-  - [Install Obsidian Copilot](#install-obsidian-copilot)
-  - [Set API Keys](#set-api-keys)
-- [Usage](#usage)
-  - [Free User](#free-user)
+- [开始使用](#开始使用)
+  - [安装Obsidian Copilot](#安装obsidian-copilot)
+  - [设置API密钥](#设置api密钥)
+- [使用方法](#使用方法)
+  - [免费用户](#免费用户)
   - [Copilot Plus/Believer](#copilot-plusbeliever)
-- [Need Help?](#need-help)
-- [FAQ](#️faq)
+- [需要帮助？](#需要帮助)
+- [常见问题](#常见问题)
 
-## Copilot V3 is a New Era 🔥
+## Copilot V3 开启新时代 🔥
 
-After months of hard work, we have revamped the codebase and adopted a new paradigm for our agentic infrastructure. It opens the door for easier addition of agentic tools (MCP support coming). We will provide a new version of the documentation soon. Here is a couple of new things that you cannot miss!
+经过几个月的努力，我们重新设计了代码库，并为我们的智能代理基础设施采用了新的范式。它为更容易添加智能代理工具打开了大门（即将支持MCP）。我们将很快提供新版本的文档。以下是你不能错过的几件新功能！
 
-- FOR ALL USERS: You can do vault search out-of-the-box **without building an index first** (Indexing is still available but optional behind the "Semantic Search" toggle in QA settings).
-- FOR FREE USERS: Image support and chat context menu are available to all users starting from v3.0.0!
-- FOR PLUS USERS: **Autonomous agent** is available with vault search, web search, youtube, composer and soon a lot other tools! **Long-term memory** is also a tool the agent can use by itself starting from 3.1.0!
+- 对所有用户：你可以**无需先构建索引**即可开箱即用库搜索（索引仍然可用，但在QA设置中的"语义搜索"切换后是可选的）。
+- 对免费用户：从v3.0.0开始，所有用户都可以使用图像支持和聊天上下文菜单！
+- 对Plus用户：**自主代理**可用，支持库搜索、网络搜索、YouTube、编辑器，以及即将推出的许多其他工具！从3.1.0开始，**长期记忆**也是代理可以自行使用的工具！
 
-Read the [Changelog](https://github.com/logancyang/obsidian-copilot/releases/tag/3.0.0).
+阅读[更新日志](https://github.com/logancyang/obsidian-copilot/releases/tag/3.0.0)。
 
-## Why People Love It ❤️
+## 为什么人们喜欢它 ❤️
 
-- *"Copilot is the missing link that turns Obsidian into a true second brain. I use it to draft investment memos with text, code, and visuals—all in one place. It’s the first tool that truly unifies how I search, process, organize, and retrieve knowledge without ever leaving Obsidian. With AI-powered search, organization, and reasoning built into my notes, it unlocks insights I’d otherwise miss. My workflow is faster, deeper, and more connected than ever—I can’t imagine working without it."* - @jasonzhangb, Investor & Research Analyst
-- *"Since discovering Copilot, my writing process has been completely transformed. Conversing with my own articles and thoughts is the most refreshing experience I’ve had in decades.”* - Mat QV, Writer
-- *"Copilot has transformed our family—not just as a productivity assistant, but as a therapist. I introduced it to my non‑technical wife, Mania, who was stressed about our daughter’s upcoming exam; within an hour, she gained clarity on her mindset and next steps, finding calm and confidence."* - @screenfluent, A Loving Husband
+- _"Copilot是将Obsidian转变为真正第二大脑的缺失环节。我用它来起草包含文本、代码和视觉效果的投资备忘录——所有内容都在一个地方。这是第一个真正统一我搜索、处理、组织和检索知识方式的工具，无需离开Obsidian。通过内置在我的笔记中的AI驱动搜索、组织和推理，它解锁了我否则会错过的见解。我的工作流程比以往任何时候都更快、更深入、更互联——我无法想象没有它工作。"_ - @jasonzhangb，投资者和研究分析师
+- _"自从发现Copilot以来，我的写作过程完全改变了。与我自己的文章和思想对话是我几十年来经历过的最令人耳目一新的体验。"_ - Mat QV，作家
+- _"Copilot改变了我们的家庭——不仅作为生产力助手，还作为治疗师。我把它介绍给了我不懂技术的妻子Mania，她对女儿即将到来的考试感到压力；在一个小时内，她对自己的心态和下一步行动有了清晰的认识，找到了平静和信心。"_ - @screenfluent，一位慈爱的丈夫
 
-## Get Started
+## 开始使用
 
-### Install Obsidian Copilot
+### 安装Obsidian Copilot
 
-1. Open **Obsidian → Settings → Community plugins**.
-2. Turn off **Safe mode** (if enabled).
-3. Click **Browse**, search for **“Copilot for Obsidian”**.
-4. Click **Install**, then **Enable**.
+1. 打开 **Obsidian → 设置 → 社区插件**。
+2. 关闭 **安全模式**（如果已启用）。
+3. 点击 **浏览**，搜索 **"Copilot for Obsidian"**。
+4. 点击 **安装**，然后 **启用**。
 
-### Set API Keys
+### 设置API密钥
 
-**Free User**
+**免费用户**
 
-1. Go to **Obsidian → Settings → Copilot → Basic** and click **Set Keys**.
-2. Choose your AI provider(s) (e.g., **OpenRouter, Gemini, OpenAI, Anthropic, Cohere**) and paste your API key(s). **OpenRouter is recommended.**
+1. 转到 **Obsidian → 设置 → Copilot → 基本**，点击 **设置密钥**。
+2. 选择你的AI提供商（例如，**OpenRouter、Gemini、OpenAI、Anthropic、Cohere**）并粘贴你的API密钥。**推荐使用OpenRouter**。
 
 **Copilot Plus/Believer**
 
-1. Copy your license key at your [dashboard](https://www.obsidiancopilot.com/en/dashboard). *Don’t forget to join our wonderful Discord community!*
-2. Go to **Obsidian → Settings → Copilot → Basic** and paste the key into in the **Copilot Plus** card.
+1. 在你的[仪表板](https://www.obsidiancopilot.com/en/dashboard)上复制你的许可证密钥。_别忘了加入我们精彩的Discord社区！_
+2. 转到 **Obsidian → 设置 → Copilot → 基本**，并将密钥粘贴到 **Copilot Plus** 卡片中。
 
-## Usage
+## 使用方法
 
-### Table of Contents
-- [Free User](#free-user)
-  - [Chat Mode](#chat-mode-reference-notes-and-discuss-ideas-with-copilot)
-  - [Vault QA Mode](#vault-qa-mode-chat-with-your-entire-vault)
-  - [Command Palette](#copilots-command-palette)
-  - [Relevant Notes](#relevant-notes-notes-suggestions-based-on-semantic-similarity-and-links)
+### 目录
+
+- [免费用户](#免费用户)
+  - [聊天模式](#聊天模式-引用笔记并与copilot讨论想法)
+  - [库QA模式](#库qa模式-与你的整个库聊天)
+  - [命令面板](#copilot的命令面板)
+  - [相关笔记](#相关笔记-基于语义相似性和链接的笔记建议)
 - [Copilot Plus/Believer](#copilot-plusbeliever)
-  - [Time-Based Queries](#get-precision-insights-from-a-specific-time-window)
-  - [Agent Mode](#agent-mode-autonomous-tool-calling)
-  - [Image Understanding](#understand-images-in-your-notes)
-  - [Multi-Source Analysis](#one-prompt-every-sourceinstant-summaries-from-pdfs-videos-and-web)
+  - [基于时间的查询](#从特定时间窗口获取精确见解)
+  - [代理模式](#代理模式-自主工具调用)
+  - [图像理解](#理解你的笔记中的图像)
+  - [多源分析](#一个提示-所有来源从pdf视频和网络即时摘要)
 
-### Free User
+### 免费用户
 
-#### **Chat Mode: reference notes and discuss ideas with Copilot**
+#### **聊天模式：引用笔记并与Copilot讨论想法**
 
-Use `@` to add context and chat with your note.
+使用 `@` 添加上下文并与你的笔记聊天。
 
 <p align="center">
-    <img src="./images/Add-Context.png" alt="Chat Mode" width="700">
+    <img src="./images/Add-Context.png" alt="聊天模式" width="700">
 </p>
 
-Ask Copilot:
-  > *Summarize [[Q3 Retrospective]] and identify the top 3 action items for Q4 based on the notes in {01-Projects}.*
+询问Copilot：
+
+> _总结 [[Q3回顾]] 并根据 {01-项目} 中的笔记确定Q4的前3个行动项目。_
 
 <p align="center">
-    <img src="./images/Chat-Mode.png" alt="Chat Mode" width="700">
+    <img src="./images/Chat-Mode.png" alt="聊天模式" width="700">
 </p>
 
-#### **Vault QA Mode: chat with your entire vault**
+#### **库QA模式：与你的整个库聊天**
 
-Ask Copilot:
-  > *What are the recurring themes in my research regarding the intersection of AI and SaaS?*
+询问Copilot：
 
+> _我关于AI和SaaS交集的研究中有哪些反复出现的主题？_
 
 <p align="center">
-    <img src="./images/Vault-Mode.png" alt="Vault Mode" width="700">
+    <img src="./images/Vault-Mode.png" alt="库模式" width="700">
 </p>
 
-#### Copilot's Command Palette
-Copilot's Command Palette puts powerful AI capabilities at your fingertips. Access all commands in chat window via `/` or via
-right-click menu on selected text.
+#### Copilot的命令面板
 
-**Add selection to chat context**
+Copilot的命令面板将强大的AI功能放在你的指尖。通过 `/` 在聊天窗口中或通过
+右键菜单在选定文本上访问所有命令。
 
-Select text and add it to context. Recommend shortcut: `ctrl/cmd + L`
+**将选择添加到聊天上下文**
+
+选择文本并将其添加到上下文。推荐快捷键：`ctrl/cmd + L`
 
 <p align="center">
-    <img src="./images/Add-Selection-to-Context.png" alt="Add Selection to Context" width="700">
+    <img src="./images/Add-Selection-to-Context.png" alt="将选择添加到上下文" width="700">
 </p>
 
-**Quick Command**
+**快速命令**
 
-Select text and apply action without opening chat. Recommend shortcut: `ctrl/cmd + K`
-
+选择文本并应用操作，无需打开聊天。推荐快捷键：`ctrl/cmd + K`
 
 <p align="center">
-    <img src="./images/Quick-Command.png" alt="Quick Command" width="700">
+    <img src="./images/Quick-Command.png" alt="快速命令" width="700">
 </p>
 
+**一键编辑和应用**
 
-**Edit and Apply with One Click**
-
-Select text and edit with one RIGHT click.
+选择文本并右键单击进行编辑。
 
 <p align="center">
-    <img src="./images/One-Click-Commands.png" alt="One-Click Commands" width="700">
+    <img src="./images/One-Click-Commands.png" alt="一键命令" width="700">
 </p>
 
-**Create your Command**
+**创建你的命令**
 
-Create commands and workflows in `Settings → Copilot → Command → Add Cmd`.
+在 `设置 → Copilot → 命令 → 添加命令` 中创建命令和工作流。
 
 <p align="center">
-    <img src="./images/Create-Command.png" alt="Create Command" width="700">
+    <img src="./images/Create-Command.png" alt="创建命令" width="700">
 </p>
 
-**Command Palette in Chat**
+**聊天中的命令面板**
 
-Type `/` to use Command Palette in chat window.
+在聊天窗口中输入 `/` 以使用命令面板。
 
 <p align="center">
-    <img src="./images/Prompt-Palette.png" alt="Prompt Palette" width="700">
+    <img src="./images/Prompt-Palette.png" alt="提示面板" width="700">
 </p>
 
-#### **Relevant Notes: notes suggestions based on semantic similarity and links**
+#### **相关笔记：基于语义相似性和链接的笔记建议**
 
-Appears automatically when there's useful related content and links.
+当有有用的相关内容和链接时自动出现。
 
-Use it to quickly reference past research, ideas, or decisions—no need to search or switch tabs.
+使用它快速引用过去的研究、想法或决定——无需搜索或切换标签。
 
 <p align="center">
-    <img src="./images/Relevant-Notes.png" alt="Relevant Notes" width="700">
+    <img src="./images/Relevant-Notes.png" alt="相关笔记" width="700">
 </p>
 
 ### Copilot Plus/Believer
 
-Copilot Plus brings powerful AI agentic capabilities, context-aware actions and seamless tool integration—built to elevate your knowledge work in Obsidian.
+Copilot Plus带来强大的AI智能代理功能、上下文感知操作和无缝工具集成——旨在提升你在Obsidian中的知识工作。
 
-#### **Get Precision Insights From a Specific Time Window**
+#### **从特定时间窗口获取精确见解**
 
-In agent mode, ask copilot:
+在代理模式下，询问copilot：
 
-  > *What did I do last week?*
-
-<p align="center">
-    <img src="./images/Time-Based-Queries.png" alt="Time-Based Queries" width="700">
-</p>
-
-#### **Agent Mode: Autonomous Tool Calling**
-
-Copilot's agent automatically calls the right tools—no manual commands needed. Just ask, and it searches the web, queries your vault, and combines insights seamlessly.
-
-Ask Copilot in agent mode:
-
-  > *Research web and my vault and draft a note on AI SaaS onboarding best practices.*
+> _我上周做了什么？_
 
 <p align="center">
-    <img src="./images/Agent-Mode.png" alt="Agent Mode" width="700">
+    <img src="./images/Time-Based-Queries.png" alt="基于时间的查询" width="700">
 </p>
 
-#### **Understand Images in Your Notes**
+#### **代理模式：自主工具调用**
 
-Copilot can analyze images embedded in your notes—from wireframes and diagrams to screenshots and photos. Get detailed feedback, suggestions, and insights based on visual content.
+Copilot的代理会自动调用正确的工具——无需手动命令。只需提问，它就会搜索网络、查询你的库，并无缝整合见解。
 
-Ask Copilot to analyze your wireframes:
+在代理模式下询问Copilot：
 
-  > *Analyze the wireframe in [[UX Design - Mobile App Wireframes]] and suggest improvements for the navigation flow.*
+> _研究网络和我的库，并起草一篇关于AI SaaS入职最佳实践的笔记。_
 
 <p align="center">
-    <img src="./images/Note-Image.png" alt="Image Understanding" width="700">
+    <img src="./images/Agent-Mode.png" alt="代理模式" width="700">
 </p>
 
-#### **One Prompt, Every Source—Instant Summaries from PDFs, Videos, and Web**
+#### **理解你的笔记中的图像**
 
+Copilot可以分析嵌入在你笔记中的图像——从线框图和图表到截图和照片。根据视觉内容获取详细的反馈、建议和见解。
 
-In agent mode, ask Copilot
+要求Copilot分析你的线框图：
 
-  > *Compare the information about [Agent Memory] from this youtube video: [URL], this PDF [file], and @web[search results]. Start with your
-     conclusion in bullet points in your response*
-
-
+> _分析 [[UX设计 - 移动应用线框图]] 中的线框图，并就导航流程提出改进建议。_
 
 <p align="center">
-    <img src="./images/One-Prompt-Every-Source.png" alt="One Prompt, Every Source" width="700">
+    <img src="./images/Note-Image.png" alt="图像理解" width="700">
 </p>
 
-## **Need Help?**
+#### **一个提示，所有来源——从PDF、视频和网络即时摘要**
 
-- Check the [documentation](https://www.obsidiancopilot.com/en/docs) for setup guides, how-tos, and advanced features.
-- Watch [Youtube](https://www.youtube.com/@loganhallucinates) for walkthroughs.
-- If you're experiencing a bug or have a feature idea, please follow the steps below to help us help you faster:
-  - 🐛 Bug Report Checklist
-    - ☑️Use the [bug report template](https://github.com/logancyang/obsidian-copilot/issues/new?template=bug_report.md) when reporting an issue
-    - ☑️Enable Debug Mode in Copilot Settings → Advanced for more detailed logs
-    - ☑️Open the dev console to collect error messages:
-      - Mac: Cmd + Option + I
-      - Windows: Ctrl + Shift + I
-    - ☑️Turn off all other plugins, keeping only Copilot enabled
-    - ☑️Attach relevant console logs to your report
-    - ☑️Submit your bug report [here](https://github.com/logancyang/obsidian-copilot/issues/new?template=bug_report.md)
-  - 💡 Feature Request Checklist
-    - ☑️Use the [feature request template](https://github.com/logancyang/obsidian-copilot/issues/new?template=feature_request.md) for requesting a new feature
-    - ☑️Clearly describe the feature, why it matters, and how it would help
-    - ☑️Submit your feature request [here](https://github.com/logancyang/obsidian-copilot/issues/new?template=feature_request.md)
+在代理模式下，询问Copilot：
 
-## **FAQ**
+> _比较关于[Agent Memory]的信息，来自这个YouTube视频：[URL]、这个PDF [文件] 和 @web[搜索结果]。在你的回复中以要点形式开始你的结论。_
+
+<p align="center">
+    <img src="./images/One-Prompt-Every-Source.png" alt="一个提示，所有来源" width="700">
+</p>
+
+## **需要帮助？**
+
+- 查看 [文档](https://www.obsidiancopilot.com/en/docs) 了解设置指南、使用方法和高级功能。
+- 观看 [YouTube](https://www.youtube.com/@loganhallucinates) 上的教程。
+- 如果你遇到bug或有功能想法，请按照以下步骤帮助我们更快地帮助你：
+  - 🐛 Bug报告清单
+    - ☑️ 报告问题时使用 [bug报告模板](https://github.com/logancyang/obsidian-copilot/issues/new?template=bug_report.md)
+    - ☑️ 在Copilot设置 → 高级中启用调试模式以获取更详细的日志
+    - ☑️ 打开开发控制台收集错误消息：
+      - Mac：Cmd + Option + I
+      - Windows：Ctrl + Shift + I
+    - ☑️ 关闭所有其他插件，只启用Copilot
+    - ☑️ 将相关控制台日志附加到你的报告中
+    - ☑️ 在此处提交你的bug报告 [here](https://github.com/logancyang/obsidian-copilot/issues/new?template=bug_report.md)
+  - 💡 功能请求清单
+    - ☑️ 请求新功能时使用 [功能请求模板](https://github.com/logancyang/obsidian-copilot/issues/new?template=feature_request.md)
+    - ☑️ 清晰描述功能、为什么重要以及它将如何帮助
+    - ☑️ 在此处提交你的功能请求 [here](https://github.com/logancyang/obsidian-copilot/issues/new?template=feature_request.md)
+
+## **常见问题**
 
 <details>
-  <summary><strong>Why isn’t Vault search finding my notes?</strong></summary>
+  <summary><strong>为什么库搜索找不到我的笔记？</strong></summary>
 
-If you're using the Vault QA mode (or the tool <code>@vault</code> in Plus), try the following:
+如果你使用的是库QA模式（或Plus中的<code>@vault</code>工具），请尝试以下方法：
 
-- Ensure you have a working embedding model from your AI model's provider (e.g. OpenAI). Watch this video: [AI Model Setup (API Key)](https://www.youtube.com/watch?v=mzMbiamzOqM)
-- Ensure your Copilot indexing is up-to-date. Watch this video: [Vault Mode](https://www.youtube.com/watch?v=hBLMWE8WRFU)
-- If issues persist, run <strong>Force Re-Index</strong> or use <strong>List Indexed Files</strong> from the Command Palette to inspect what's included in the index.
-- ⚠️ <strong>Don’t switch embedding models after indexing</strong>—it can break the results.
+- 确保你有一个来自AI模型提供商的可用嵌入模型（例如OpenAI）。观看此视频：[AI模型设置（API密钥）](https://www.youtube.com/watch?v=mzMbiamzOqM)
+- 确保你的Copilot索引是最新的。观看此视频：[库模式](https://www.youtube.com/watch?v=hBLMWE8WRFU)
+- 如果问题仍然存在，运行 **强制重新索引** 或使用命令面板中的 **列出索引文件** 来检查索引中包含的内容。
+- ⚠️ <strong>不要在索引后切换嵌入模型</strong>——这可能会破坏结果。
 </details>
 
 <details>
-  <summary><strong>Why is my AI model returning error code 429: ‘Insufficient Quota’?</strong></summary>
+  <summary><strong>为什么我的AI模型返回错误代码429：'Insufficient Quota'？</strong></summary>
 
-Most likely this is happening because you haven’t configured billing with your chosen model provider—or you’ve hit your monthly quota. For example, OpenAI typically caps individual accounts at $120/month. To resolve:
+最可能的原因是你尚未在所选模型提供商处配置计费——或者你已达到每月配额。例如，OpenAI通常将个人账户限制在每月120美元。要解决：
 
-- ▶️ Watch the “AI Model Setup” video: [AI Model Setup (API Key)](https://www.youtube.com/watch?v=mzMbiamzOqM)
-- 🔍 Verify your billing settings in your OpenAI dashboard
-- 💳 Add a payment method if one isn’t already on file
-- 📊 Check your usage dashboard for any quota or limit warnings
+- ▶️ 观看 "AI模型设置" 视频：[AI模型设置（API密钥）](https://www.youtube.com/watch?v=mzMbiamzOqM)
+- 🔍 验证你的OpenAI仪表板中的计费设置
+- 💳 如果没有，请添加支付方式
+- 📊 检查你的使用情况仪表板是否有任何配额或限制警告
 
-If you’re using a different provider, please refer to their documentation and billing policies for the equivalent steps.
+如果你使用的是其他提供商，请参考他们的文档和计费政策了解等效步骤。
 
 </details>
 
 <details>
-  <summary><strong>Why am I getting a token limit error?</strong></summary>
+  <summary><strong>为什么我收到令牌限制错误？</strong></summary>
 
-Please refer to your model provider’s documentation for the context window size.
+请参考你的模型提供商的文档了解上下文窗口大小。
 
-⚠️ If you set a large <strong>max token limit</strong> in your Copilot settings, you may encounter this error.
+⚠️ 如果你在Copilot设置中设置了较大的 <strong>最大令牌限制</strong>，你可能会遇到此错误。
 
-- <strong>Max tokens</strong> refers to <em>completion tokens</em>, not input tokens.
-- A higher output token limit means less room for input!
+- <strong>最大令牌数</strong> 指的是 <em>完成令牌</em>，而不是输入令牌。
+- 更高的输出令牌限制意味着输入空间更少！
 
-🧠 Behind-the-scenes prompts for Copilot commands also consume tokens, so:
+🧠 Copilot命令的幕后提示也会消耗令牌，因此：
 
-- Keep your message length short
-- Set a reasonable max token value to avoid hitting the cap
+- 保持你的消息长度简短
+- 设置合理的最大令牌值以避免达到上限
 
-💡 For QA with unlimited context, switch to the <strong>Vault QA</strong> mode in the dropdown (Copilot v2.1.0+ required).
+💡 对于无限上下文的QA，请在下拉菜单中切换到 <strong>库QA</strong> 模式（需要Copilot v2.1.0+）。
 
 </details>
 
-## **🙏 Thank You**
+## **🙏 感谢**
 
-If you share the vision of building the most powerful AI agent for our second brain, consider [sponsoring this project](https://github.com/sponsors/logancyang) or buying me a coffee. Help spread the word by sharing Copilot for Obsidian on Twitter/X, Reddit, or your favorite platform!
+如果你认同构建最强大的第二大脑AI代理的愿景，请考虑 [赞助这个项目](https://github.com/sponsors/logancyang) 或请我喝杯咖啡。通过在Twitter/X、Reddit或你喜欢的平台上分享Copilot for Obsidian来帮助传播消息！
 
 <p align="center">
   <img src="https://camo.githubusercontent.com/7b8f7343bfc6e3c65c7901846637b603fd812f1a5f768d8b0572558bde859eb9/68747470733a2f2f63646e2e6275796d6561636f666665652e636f6d2f627574746f6e732f76322f64656661756c742d79656c6c6f772e706e67" alt="BuyMeACoffee" width="200">
 </p>
 
-**Acknowledgments**
+**致谢**
 
-Special thanks to our top sponsors: @mikelaaron, @pedramamini, @Arlorean, @dashinja, @azagore, @MTGMAD, @gpythomas, @emaynard, @scmarinelli, @borthwick, @adamhill, @gluecode, @rusi, @timgrote, @JiaruiYu-Consilium, @ddocta, @AMOz1, @chchwy, @pborenstein, @GitTom, @kazukgw, @mjluser1, @joesfer, @rwaal, @turnoutnow-harpreet, @dreznicek, @xrise-informatik, @jeremygentles, @ZhengRui, @bfoujols, @jsmith0475, @pagiaddlemon, @sebbyyyywebbyyy, @royschwartz2, @vikram11, @amiable-dev, @khalidhalim, @DrJsPBs, @chishaku, @Andrea18500, @shayonpal, @rhm2k, @snorcup, @JohnBub, @obstinatelark, @jonashaefele, @vishnu2kmohan
+特别感谢我们的顶级赞助商：@mikelaaron, @pedramamini, @Arlorean, @dashinja, @azagore, @MTGMAD, @gpythomas, @emaynard, @scmarinelli, @borthwick, @adamhill, @gluecode, @rusi, @timgrote, @JiaruiYu-Consilium, @ddocta, @AMOz1, @chchwy, @pborenstein, @GitTom, @kazukgw, @mjluser1, @joesfer, @rwaal, @turnoutnow-harpreet, @dreznicek, @xrise-informatik, @jeremygentles, @ZhengRui, @bfoujols, @jsmith0475, @pagiaddlemon, @sebbyyyywebbyyy, @royschwartz2, @vikram11, @amiable-dev, @khalidhalim, @DrJsPBs, @chishaku, @Andrea18500, @shayonpal, @rhm2k, @snorcup, @JohnBub, @obstinatelark, @jonashaefele, @vishnu2kmohan
 
-## **Copilot Plus Disclosure**
+## **Copilot Plus 披露**
 
-Copilot Plus is a premium product of Brevilabs LLC and it is not affiliated with Obsidian. It offers a powerful agentic AI integration into Obsidian. Please check out our website [obsidiancopilot.com](https://obsidiancopilot.com/) for more details!
+Copilot Plus是Brevilabs LLC的高级产品，与Obsidian无关。它提供了强大的AI智能代理与Obsidian的集成。请查看我们的网站 [obsidiancopilot.com](https://obsidiancopilot.com/) 了解更多详情！
 
-- An account and payment are required for full access.
-- Copilot Plus requires network use to faciliate the AI agent.
-- Copilot Plus does not access your files without your consent.
-- Copilot Plus collect server-side telemetry to improve the product. Please see the privacy policy on the website for more details.
-- The frontend code of Copilot plugin is fully open-source. However, the backend code facilitating the AI agents is close-sourced and proprietary.
-- We offer a full refund if you are not satisfied with the product within 14 days of your purchase, no questions asked.
+- 需要账户和付款才能完全访问。
+- Copilot Plus需要网络使用来支持AI代理。
+- Copilot Plus不会在未经你同意的情况下访问你的文件。
+- Copilot Plus收集服务器端遥测数据以改进产品。请查看网站上的隐私政策了解更多详情。
+- Copilot插件的前端代码是完全开源的。然而，支持AI代理的后端代码是闭源和专有的。
+- 如果你在购买后14天内对产品不满意，我们提供全额退款，无需任何问题。
 
-## **Authors**
+## **作者**
 
-Brevilabs Team | Email: logan@brevilabs.com | X/Twitter: [@logancyang](https://twitter.com/logancyang)
+Brevilabs团队 | 电子邮件：logan@brevilabs.com | X/Twitter：[@logancyang](https://twitter.com/logancyang)

@@ -14,18 +14,18 @@ export const AdvancedSettings: React.FC = () => {
       <section>
         <SettingItem
           type="textarea"
-          title="User System Prompt"
-          description="Customize the system prompt for all messages, may result in unexpected behavior!"
+          title="用户系统提示"
+          description="自定义所有消息的系统提示，可能会导致意外行为！"
           value={settings.userSystemPrompt}
           onChange={(value) => updateSetting("userSystemPrompt", value)}
-          placeholder="Enter your system prompt here..."
+          placeholder="在此输入您的系统提示..."
         />
 
         <div className="tw-space-y-4">
           <SettingItem
             type="switch"
-            title="Enable Encryption"
-            description="Enable encryption for the API keys."
+            title="启用加密"
+            description="为API密钥启用加密。"
             checked={settings.enableEncryption}
             onCheckedChange={(checked) => {
               updateSetting("enableEncryption", checked);
@@ -34,8 +34,8 @@ export const AdvancedSettings: React.FC = () => {
 
           <SettingItem
             type="switch"
-            title="Debug Mode"
-            description="Debug mode will log some debug message to the console."
+            title="调试模式"
+            description="调试模式会将一些调试消息记录到控制台。"
             checked={settings.debug}
             onCheckedChange={(checked) => {
               updateSetting("debug", checked);
@@ -44,8 +44,8 @@ export const AdvancedSettings: React.FC = () => {
 
           <SettingItem
             type="custom"
-            title="Create Log File"
-            description={`Open the Copilot log file (${logFileManager.getLogPath()}) for easy sharing when reporting issues.`}
+            title="创建日志文件"
+            description={`打开Copilot日志文件(${logFileManager.getLogPath()})，以便在报告问题时轻松共享。`}
           >
             <Button
               variant="secondary"
@@ -56,7 +56,7 @@ export const AdvancedSettings: React.FC = () => {
                 await logFileManager.openLogFile();
               }}
             >
-              Create Log File
+              创建日志文件
             </Button>
           </SettingItem>
         </div>

@@ -43,8 +43,8 @@ export class ConfirmModal extends Modal {
     private onConfirm: () => void,
     private content: string,
     title: string,
-    private confirmButtonText: string = "Continue",
-    private cancelButtonText: string = "Cancel"
+    private confirmButtonText: string = "继续",
+    private cancelButtonText: string = "取消"
   ) {
     super(app);
     // https://docs.obsidian.md/Reference/TypeScript+API/Modal/setTitle

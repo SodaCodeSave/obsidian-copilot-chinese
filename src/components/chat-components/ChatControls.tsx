@@ -214,15 +214,15 @@ export function ChatControls({
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost2" size="fit" className="tw-ml-1 tw-text-sm tw-text-muted">
-              {selectedChain === ChainType.LLM_CHAIN && "chat (free)"}
-              {selectedChain === ChainType.VAULT_QA_CHAIN && "vault QA (free)"}
+              {selectedChain === ChainType.LLM_CHAIN && "聊天"}
+              {selectedChain === ChainType.VAULT_QA_CHAIN && "仓库问答"}
               {selectedChain === ChainType.COPILOT_PLUS_CHAIN && (
                 <div className="tw-flex tw-items-center tw-gap-1">
                   <Sparkles className="tw-size-4" />
-                  copilot plus
+                  Copilot Plus
                 </div>
               )}
-              {selectedChain === ChainType.PROJECT_CHAIN && "projects (alpha)"}
+              {selectedChain === ChainType.PROJECT_CHAIN && "项目 (测试版)"}
               <ChevronDown className="tw-mt-0.5 tw-size-5" />
             </Button>
           </DropdownMenuTrigger>
@@ -232,14 +232,14 @@ export function ChatControls({
                 handleModeChange(ChainType.LLM_CHAIN);
               }}
             >
-              chat (free)
+              聊天
             </DropdownMenuItem>
             <DropdownMenuItem
               onSelect={() => {
                 handleModeChange(ChainType.VAULT_QA_CHAIN);
               }}
             >
-              vault QA (free)
+              基于仓库回答
             </DropdownMenuItem>
             {isPlusUser ? (
               <DropdownMenuItem
@@ -249,7 +249,7 @@ export function ChatControls({
               >
                 <div className="tw-flex tw-items-center tw-gap-1">
                   <Sparkles className="tw-size-4" />
-                  copilot plus
+                  Copilot Plus
                 </div>
               </DropdownMenuItem>
             ) : (
@@ -259,7 +259,7 @@ export function ChatControls({
                   onCloseProject?.();
                 }}
               >
-                copilot plus
+                Copilot Plus
                 <SquareArrowOutUpRight className="tw-size-3" />
               </DropdownMenuItem>
             )}
@@ -272,7 +272,7 @@ export function ChatControls({
                 }}
               >
                 <LibraryBig className="tw-size-4" />
-                projects (alpha)
+                项目 (测试版)
               </DropdownMenuItem>
             ) : (
               <DropdownMenuItem
@@ -281,7 +281,7 @@ export function ChatControls({
                   onCloseProject?.();
                 }}
               >
-                copilot plus
+                Copilot Plus
                 <SquareArrowOutUpRight className="tw-size-3" />
               </DropdownMenuItem>
             )}
@@ -298,7 +298,7 @@ export function ChatControls({
               <MessageCirclePlus className="tw-size-4" />
             </Button>
           </TooltipTrigger>
-          <TooltipContent>New Chat</TooltipContent>
+          <TooltipContent>新聊天</TooltipContent>
         </Tooltip>
         {!settings.autosaveChat && (
           <Tooltip>
@@ -307,7 +307,7 @@ export function ChatControls({
                 <Download className="tw-size-4" />
               </Button>
             </TooltipTrigger>
-            <TooltipContent>Save Chat as Note</TooltipContent>
+            <TooltipContent>保存聊天为笔记</TooltipContent>
           </Tooltip>
         )}
         <Tooltip>
@@ -324,7 +324,7 @@ export function ChatControls({
               </Button>
             </TooltipTrigger>
           </ChatHistoryPopover>
-          <TooltipContent>Chat History</TooltipContent>
+          <TooltipContent>聊天历史</TooltipContent>
         </Tooltip>
 
         <DropdownMenu>
@@ -343,7 +343,7 @@ export function ChatControls({
             >
               <div className="tw-flex tw-items-center tw-gap-2">
                 <Sparkles className="tw-size-4" />
-                Suggested Prompt
+                建议提示词
               </div>
               <SettingSwitch checked={settings.showSuggestedPrompts} />
             </DropdownMenuItem>
@@ -356,7 +356,7 @@ export function ChatControls({
             >
               <div className="tw-flex tw-items-center tw-gap-2">
                 <FileText className="tw-size-4" />
-                Relevant Note
+                相关笔记
               </div>
               <SettingSwitch checked={settings.showRelevantNotes} />
             </DropdownMenuItem>
@@ -367,14 +367,14 @@ export function ChatControls({
                   onSelect={() => reloadCurrentProject()}
                 >
                   <RefreshCw className="tw-size-4" />
-                  Reload Current Project
+                  重新加载当前项目
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   className="tw-flex tw-items-center tw-gap-2"
                   onSelect={() => forceRebuildCurrentProjectContext()}
                 >
                   <AlertTriangle className="tw-size-4" />
-                  Force Rebuild Context
+                  强制重建上下文
                 </DropdownMenuItem>
               </>
             ) : (
@@ -384,7 +384,7 @@ export function ChatControls({
                   onSelect={() => refreshVaultIndex()}
                 >
                   <RefreshCw className="tw-size-4" />
-                  Refresh Vault Index
+                  刷新仓库索引
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   className="tw-flex tw-items-center tw-gap-2"
@@ -399,7 +399,7 @@ export function ChatControls({
                   }}
                 >
                   <AlertTriangle className="tw-size-4" />
-                  Force Reindex Vault
+                  强制重建Vault索引
                 </DropdownMenuItem>
               </>
             )}

@@ -42,8 +42,8 @@ export const QASettings: React.FC = () => {
           {/* Enable Semantic Search (v3) */}
           <SettingItem
             type="switch"
-            title="Enable Semantic Search"
-            description="Enable semantic search for meaning-based document retrieval. When disabled, uses fast lexical search only. Use 'Refresh Vault Index' or 'Force Reindex Vault' to build the embedding index."
+            title="启用语义搜索"
+            description="启用基于语义的文档检索。禁用时，仅使用快速的词法搜索。使用'刷新仓库索引'或'强制重新索引仓库'来构建嵌入索引。"
             checked={settings.enableSemanticSearchV3}
             onCheckedChange={(checked) => {
               // Show confirmation modal with appropriate message
@@ -65,26 +65,23 @@ export const QASettings: React.FC = () => {
           {/* Embedding Model - Always shown to reduce ambiguity */}
           <SettingItem
             type="select"
-            title="Embedding Model"
+            title="嵌入模型"
             description={
               <div className="tw-space-y-2">
                 <div className="tw-flex tw-items-center tw-gap-1.5">
                   <span className="tw-font-medium tw-leading-none tw-text-accent">
-                    Powers Semantic Vault Search and Relevant Notes. Enable Semantic Search to use
-                    it.
+                    为语义仓库搜索和相关笔记提供支持。启用语义搜索后才能使用。
                   </span>
                   <HelpTooltip
                     content={
                       <div className="tw-flex tw-max-w-96 tw-flex-col tw-gap-2">
                         <div className="tw-pt-2 tw-text-sm tw-text-muted">
-                          This model converts text into vector representations, essential for
-                          semantic search and Question Answering (QA) functionality. Changing the
-                          embedding model will:
+                          该模型将文本转换为向量表示，这对于语义搜索和问答(QA)功能至关重要。更改嵌入模型将：
                         </div>
                         <ul className="tw-pl-4 tw-text-sm tw-text-muted">
-                          <li>Require rebuilding your vault&#39;s vector index</li>
-                          <li>Affect semantic search quality</li>
-                          <li>Impact Question Answering feature performance</li>
+                          <li>需要重建仓库的向量索引</li>
+                          <li>影响语义搜索质量</li>
+                          <li>影响问答功能的性能</li>
                         </ul>
                       </div>
                     }
@@ -98,54 +95,50 @@ export const QASettings: React.FC = () => {
               label: getModelDisplayWithIcons(model),
               value: getModelKeyFromModel(model),
             }))}
-            placeholder="Model"
+            placeholder="模型"
           />
 
           {/* Auto-Index Strategy */}
           <SettingItem
             type="select"
-            title="Auto-Index Strategy"
+            title="自动索引策略"
             description={
               <div className="tw-flex tw-items-center tw-gap-1.5">
-                <span className="tw-leading-none">
-                  Decide when you want the vault to be indexed.
-                </span>
+                <span className="tw-leading-none">决定何时索引您的vault。</span>
                 <HelpTooltip
                   content={
                     <div className="tw-space-y-2 tw-py-2">
                       <div className="tw-space-y-1">
-                        <div className="tw-text-sm tw-text-muted">
-                          Choose when to index your vault:
-                        </div>
+                        <div className="tw-text-sm tw-text-muted">选择何时索引您的vault：</div>
                         <ul className="tw-list-disc tw-space-y-1 tw-pl-2 tw-text-sm">
                           <li>
                             <div className="tw-flex tw-items-center tw-gap-1">
                               <strong className="tw-inline-block tw-whitespace-nowrap">
-                                NEVER:
+                                NEVER（从不）：
                               </strong>
-                              <span>Manual indexing via command or refresh only</span>
+                              <span>仅通过命令或刷新手动索引</span>
                             </div>
                           </li>
                           <li>
                             <div className="tw-flex tw-items-center tw-gap-1">
                               <strong className="tw-inline-block tw-whitespace-nowrap">
-                                ON STARTUP:
+                                ON STARTUP（启动时）：
                               </strong>
-                              <span>Index updates when plugin loads or reloads</span>
+                              <span>插件加载或重新加载时更新索引</span>
                             </div>
                           </li>
                           <li>
                             <div className="tw-flex tw-items-center tw-gap-1">
                               <strong className="tw-inline-block tw-whitespace-nowrap">
-                                ON MODE SWITCH:
+                                ON MODE SWITCH（切换模式时）：
                               </strong>
-                              <span>Updates when entering QA mode (Recommended)</span>
+                              <span>进入QA模式时更新（推荐）</span>
                             </div>
                           </li>
                         </ul>
                       </div>
                       <p className="tw-text-sm tw-text-callout-warning">
-                        Warning: Cost implications for large vaults with paid models
+                        警告：对于大型vault使用付费模型会产生成本影响
                       </p>
                     </div>
                   }
@@ -157,17 +150,24 @@ export const QASettings: React.FC = () => {
               updateSetting("indexVaultToVectorStore", value);
             }}
             options={VAULT_VECTOR_STORE_STRATEGIES.map((strategy) => ({
-              label: strategy,
+              label:
+                strategy === "NEVER"
+                  ? "从不"
+                  : strategy === "ON STARTUP"
+                    ? "启动时"
+                    : strategy === "ON MODE SWITCH"
+                      ? "切换模式时"
+                      : strategy,
               value: strategy,
             }))}
-            placeholder="Strategy"
+            placeholder="策略"
           />
 
           {/* Max Sources */}
           <SettingItem
             type="slider"
-            title="Max Sources"
-            description="Copilot goes through your vault to find relevant notes and passes the top N to the LLM. Default for N is 15. Increase if you want more notes included in the answer generation step."
+            title="最大源数量"
+            description="Copilot会浏览您的vault以查找相关笔记，并将前N个笔记传递给LLM。N的默认值为15。如果您希望在答案生成步骤中包含更多笔记，请增加此值。"
             min={1}
             max={128}
             step={1}
@@ -181,8 +181,8 @@ export const QASettings: React.FC = () => {
               {/* Requests per Minute */}
               <SettingItem
                 type="slider"
-                title="Requests per Minute"
-                description="Default is 60. Decrease if you are rate limited by your embedding provider."
+                title="每分钟请求数"
+                description="默认值为60。如果您的嵌入提供商限制了速率，请减少此值。"
                 min={10}
                 max={60}
                 step={10}
@@ -193,8 +193,8 @@ export const QASettings: React.FC = () => {
               {/* Embedding batch size */}
               <SettingItem
                 type="slider"
-                title="Embedding Batch Size"
-                description="Default is 16. Increase if you are rate limited by your embedding provider."
+                title="嵌入批次大小"
+                description="默认值为16。如果您的嵌入提供商限制了速率，请增加此值。"
                 min={1}
                 max={128}
                 step={1}
@@ -205,8 +205,8 @@ export const QASettings: React.FC = () => {
               {/* Number of Partitions */}
               <SettingItem
                 type="select"
-                title="Number of Partitions"
-                description="Number of partitions for Copilot index. Default is 1. Increase if you have issues indexing large vaults. Warning: Changes require clearing and rebuilding the index!"
+                title="分区数量"
+                description="Copilot索引的分区数量。默认值为1。如果您在索引大型vault时遇到问题，请增加此值。警告：更改需要清除并重建索引！"
                 value={String(settings.numPartitions || 1)}
                 onChange={(value) => updateSetting("numPartitions", Number(value))}
                 options={[
@@ -218,7 +218,7 @@ export const QASettings: React.FC = () => {
                   { label: "32", value: "32" },
                   { label: "40", value: "40" },
                 ]}
-                placeholder="Select partitions"
+                placeholder="选择分区数量"
               />
             </>
           )}
@@ -226,8 +226,8 @@ export const QASettings: React.FC = () => {
           {/* Lexical Search RAM Limit */}
           <SettingItem
             type="slider"
-            title="Lexical Search RAM Limit"
-            description="Maximum RAM usage for full-text search index. Lower values use less memory but may limit search performance on large vaults. Default is 100 MB."
+            title="词法搜索RAM限制"
+            description="全文搜索索引的最大RAM使用量。较低的值使用较少的内存，但可能会限制大型vault上的搜索性能。默认值为100 MB。"
             min={20}
             max={1000}
             step={20}
@@ -239,8 +239,8 @@ export const QASettings: React.FC = () => {
           {/* Enable Folder and Graph Boosts */}
           <SettingItem
             type="switch"
-            title="Enable Folder and Graph Boosts"
-            description="Enable folder and graph-based relevance boosts for lexical search results. When disabled, provides pure keyword-based relevance scoring without folder or connection-based adjustments."
+            title="启用文件夹和图谱增强"
+            description="为词法搜索结果启用基于文件夹和图谱的相关性增强。禁用时，提供纯基于关键字的相关性评分，不进行基于文件夹或连接的调整。"
             checked={settings.enableLexicalBoosts}
             onCheckedChange={(checked) => updateSetting("enableLexicalBoosts", checked)}
           />
@@ -248,12 +248,12 @@ export const QASettings: React.FC = () => {
           {/* Exclusions */}
           <SettingItem
             type="custom"
-            title="Exclusions"
+            title="排除项"
             description={
               <>
                 <p>
-                  Exclude folders, tags, note titles or file extensions from being indexed.
-                  Previously indexed files will remain until a force re-index is performed.
+                  从索引中排除文件夹、标签、笔记标题或文件扩展名。
+                  之前索引的文件将保留，直到执行强制重新索引。
                 </p>
               </>
             }
@@ -265,23 +265,22 @@ export const QASettings: React.FC = () => {
                   app,
                   (value) => updateSetting("qaExclusions", value),
                   settings.qaExclusions,
-                  "Manage Exclusions"
+                  "管理排除项"
                 ).open()
               }
             >
-              Manage
+              管理
             </Button>
           </SettingItem>
 
           {/* Inclusions */}
           <SettingItem
             type="custom"
-            title="Inclusions"
+            title="包含项"
             description={
               <p>
-                Index only the specified paths, tags, or note titles. Exclusions take precedence
-                over inclusions. Previously indexed files will remain until a force re-index is
-                performed.
+                仅索引指定的路径、标签或笔记标题。排除项优先于包含项。
+                之前索引的文件将保留，直到执行强制重新索引。
               </p>
             }
           >
@@ -292,19 +291,19 @@ export const QASettings: React.FC = () => {
                   app,
                   (value) => updateSetting("qaInclusions", value),
                   settings.qaInclusions,
-                  "Manage Inclusions"
+                  "管理包含项"
                 ).open()
               }
             >
-              Manage
+              管理
             </Button>
           </SettingItem>
 
           {/* Enable Obsidian Sync */}
           <SettingItem
             type="switch"
-            title="Enable Obsidian Sync for Copilot index"
-            description="If enabled, store the semantic index in .obsidian so it syncs with Obsidian Sync. If disabled, store it under .copilot/ at the vault root."
+            title="为Copilot索引启用Obsidian Sync"
+            description="如果启用，将语义索引存储在.obsidian中，以便与Obsidian Sync同步。如果禁用，将存储在vault根目录下的.copilot/中。"
             checked={settings.enableIndexSync}
             onCheckedChange={(checked) => updateSetting("enableIndexSync", checked)}
           />
@@ -312,8 +311,8 @@ export const QASettings: React.FC = () => {
           {/* Disable index loading on mobile */}
           <SettingItem
             type="switch"
-            title="Disable index loading on mobile"
-            description="When enabled, Copilot index won't be loaded on mobile devices to save resources. Only chat mode will be available. Any existing index from desktop sync will be preserved. Uncheck to enable QA modes on mobile."
+            title="在移动设备上禁用索引加载"
+            description="启用后，Copilot索引不会在移动设备上加载，以节省资源。仅聊天模式可用。桌面同步的任何现有索引都将保留。取消勾选可在移动设备上启用QA模式。"
             checked={settings.disableIndexOnMobile}
             onCheckedChange={(checked) => updateSetting("disableIndexOnMobile", checked)}
           />

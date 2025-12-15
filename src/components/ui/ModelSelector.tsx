@@ -48,11 +48,11 @@ export function ModelSelector({
         >
           <div className="tw-min-w-0 tw-flex-1 tw-truncate">
             {modelError ? (
-              <span className="tw-truncate tw-text-error">Model Load Failed</span>
+              <span className="tw-truncate tw-text-error">模型加载失败</span>
             ) : currentModel ? (
               <ModelDisplay model={currentModel} iconSize={8} />
             ) : (
-              <span className="tw-truncate">Select Model</span>
+              <span className="tw-truncate">选择模型</span>
             )}
           </div>
           {!disabled && <ChevronDown className="tw-mt-0.5 tw-size-5 tw-shrink-0" />}
@@ -76,7 +76,7 @@ export function ModelSelector({
                     setModelError(null);
                     onChange(getModelKeyFromModel(model));
                   } catch (error) {
-                    const msg = `Model switch failed: ` + err2String(error);
+                    const msg = `模型切换失败: ` + err2String(error);
                     setModelError(msg);
                     // Restore to the last valid model
                     const lastValidModel = settings.activeModels.find(

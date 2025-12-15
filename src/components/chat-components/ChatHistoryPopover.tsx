@@ -63,21 +63,21 @@ export function ChatHistoryPopover({
       let groupKey: string;
       let priority: number;
       if (diffDays === 0) {
-        groupKey = "Today";
+        groupKey = "今天";
         priority = 0;
       } else if (diffDays === 1) {
-        groupKey = "Yesterday";
+        groupKey = "昨天";
         priority = 1;
       } else if (diffDays < 7) {
-        groupKey = `${diffDays}d ago`;
+        groupKey = `${diffDays}天前`;
         priority = 2 + diffDays;
       } else if (diffDays < 30) {
         const weeks = Math.floor(diffDays / 7);
-        groupKey = weeks === 1 ? "1w ago" : `${weeks}w ago`;
+        groupKey = weeks === 1 ? "1周前" : `${weeks}周前`;
         priority = 10 + weeks;
       } else {
         const months = Math.floor(diffDays / 30);
-        groupKey = months === 1 ? "1m ago" : `${months}m ago`;
+        groupKey = months === 1 ? "1个月前" : `${months}个月前`;
         priority = 50 + months;
       }
 
@@ -171,7 +171,7 @@ export function ChatHistoryPopover({
             <div className="tw-p-2">
               {groupedHistory.length === 0 ? (
                 <div className="tw-py-8 tw-text-center tw-text-muted">
-                  {searchQuery ? "No matching chat history found." : "No chat history"}
+                  {searchQuery ? "未找到匹配的聊天历史。" : "暂无聊天历史"}
                 </div>
               ) : (
                 groupedHistory.map((group) => (
@@ -304,7 +304,7 @@ function ChatHistoryItem({
                 onDelete(chat.id);
               }}
               className="tw-size-5 tw-p-0 tw-text-error hover:tw-text-error"
-              title="Confirm Delete"
+              title="确认删除"
             >
               <Check className="tw-size-3" />
             </Button>
@@ -316,7 +316,7 @@ function ChatHistoryItem({
                 onCancelDelete();
               }}
               className="tw-size-5 tw-p-0"
-              title="Cancel deletion"
+              title="取消删除"
             >
               <X className="tw-size-3" />
             </Button>
@@ -334,7 +334,7 @@ function ChatHistoryItem({
                 }
               }}
               className="tw-size-5 tw-p-0"
-              title="Open the source file"
+              title="打开源文件"
             >
               <ArrowUpRight className="tw-size-4" />
             </Button>
@@ -358,7 +358,7 @@ function ChatHistoryItem({
                 onDelete(chat.id);
               }}
               className="tw-size-5 tw-p-0 tw-text-error hover:tw-text-error"
-              title="delete file"
+              title="删除文件"
             >
               <Trash2 className="tw-size-3" />
             </Button>
