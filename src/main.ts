@@ -21,7 +21,6 @@ import { logInfo } from "@/logger";
 import { logFileManager } from "@/logFileManager";
 import { UserMemoryManager } from "@/memory/UserMemoryManager";
 import { clearRecordedPromptPayload } from "@/LLMProviders/chainRunner/utils/promptPayloadRecorder";
-import { checkIsPlusUser } from "@/plusUtils";
 import VectorStoreManager from "@/search/vectorStoreManager";
 import { CopilotSettingTab } from "@/settings/SettingsPage";
 import {
@@ -87,7 +86,6 @@ export default class CopilotPlugin extends Plugin {
     // Initialize BrevilabsClient
     this.brevilabsClient = BrevilabsClient.getInstance();
     this.brevilabsClient.setPluginVersion(this.manifest.version);
-    checkIsPlusUser();
 
     // Initialize ProjectManager
     this.projectManager = ProjectManager.getInstance(this.app, this);
