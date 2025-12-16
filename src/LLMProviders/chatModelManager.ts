@@ -60,6 +60,7 @@ const CHAT_PROVIDER_CONSTRUCTORS = {
   [ChatModelProviders.DEEPSEEK]: ChatDeepSeek,
   [ChatModelProviders.AMAZON_BEDROCK]: BedrockChatModel,
   [ChatModelProviders.MODELSCOPE]: ChatOpenAI,
+  [ChatModelProviders.FREEQWEN3]: ChatOpenAI,
 } as const;
 
 type ChatProviderConstructMap = typeof CHAT_PROVIDER_CONSTRUCTORS;
@@ -96,6 +97,7 @@ export default class ChatModelManager {
     [ChatModelProviders.AMAZON_BEDROCK]: () => getSettings().amazonBedrockApiKey,
     [ChatModelProviders.SILICONFLOW]: () => getSettings().siliconflowApiKey,
     [ChatModelProviders.MODELSCOPE]: () => getSettings().modelscopeApiKey,
+    [ChatModelProviders.FREEQWEN3]: () => getSettings().freeqwen3ApiKey,
   } as const;
 
   private constructor() {
@@ -359,6 +361,21 @@ export default class ChatModelManager {
         },
       },
       [ChatModelProviders.AMAZON_BEDROCK]: {} as BedrockChatModelFields,
+      [ChatModelProviders.FREEQWEN3]: {
+        modelName: modelName,
+        apiKey: await getDecryptedKey(customModel.apiKey || settings.freeqwen3ApiKey),
+        configuration: {
+          baseURL: customModel.baseUrl || ProviderInfo[ChatModelProviders.FREEQWEN3].host,
+          fetch: customModel.enableCors ? safeFetch : undefined,
+          defaultHeaders: { "dangerously-allow-browser": true },
+        },
+        ...this.getOpenAISpecialConfig(
+          modelName,
+          customModel.maxTokens ?? settings.maxTokens,
+          customModel.temperature ?? settings.temperature,
+          customModel
+        ),
+      },
     };
 
     let selectedProviderConfig =

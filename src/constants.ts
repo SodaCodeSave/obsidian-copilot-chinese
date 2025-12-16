@@ -184,6 +184,7 @@ export enum ChatModelProviders {
   COHEREAI = "cohereai",
   SILICONFLOW = "siliconflow",
   MODELSCOPE = "modelscope",
+  FREEQWEN3 = "freeqwen3",
 }
 
 export enum ModelCapability {
@@ -371,6 +372,12 @@ export const BUILTIN_CHAT_MODELS: CustomModel[] = [
     baseUrl: "https://api.siliconflow.cn/v1",
     capabilities: [ModelCapability.REASONING],
   },
+  {
+    name: "free:Qwen3-30B-A3B",
+    provider: ChatModelProviders.FREEQWEN3,
+    enabled: true,
+    isBuiltIn: true,
+  },
 ];
 
 export enum EmbeddingModelProviders {
@@ -385,6 +392,7 @@ export enum EmbeddingModelProviders {
   COPILOT_PLUS_JINA = "copilot-plus-jina",
   SILICONFLOW = "siliconflow",
   MODELSCOPE = "modelscope",
+  FREEQWEN3 = "freeqwen3",
 }
 
 export enum EmbeddingModels {
@@ -517,6 +525,12 @@ export const ProviderInfo: Record<Provider, ProviderMetadata> = {
     keyManagementURL: "https://modelscope.cn/my/myaccesstoken",
     listModelURL: "https://api-inference.modelscope.cn/v1/models",
   },
+  [ChatModelProviders.FREEQWEN3]: {
+    label: "FreeQwen3",
+    host: "https://api.suanli.cn/v1",
+    keyManagementURL: "",
+    listModelURL: "https://api.suanli.cn/v1/models",
+  },
   [ChatModelProviders.OPENROUTERAI]: {
     label: "OpenRouter",
     host: "https://openrouter.ai/api/v1/",
@@ -648,6 +662,7 @@ export const ProviderSettingsKeyMap: Record<SettingKeyProviders, keyof CopilotSe
   "amazon-bedrock": "amazonBedrockApiKey",
   siliconflow: "siliconflowApiKey",
   modelscope: "modelscopeApiKey",
+  freeqwen3: "freeqwen3ApiKey",
 };
 
 export enum VAULT_VECTOR_STORE_STRATEGY {
@@ -759,6 +774,7 @@ export const DEFAULT_SETTINGS: CopilotSettings = {
   amazonBedrockRegion: "",
   siliconflowApiKey: "",
   modelscopeApiKey: "",
+  freeqwen3ApiKey: "sk-W0rpStc95T7JVYVwDYc29IyirjtpPPby6SozFMQr17m8KWeo",
   defaultChainType: ChainType.LLM_CHAIN,
   defaultModelKey: ChatModels.OPENROUTER_GEMINI_2_5_FLASH + "|" + ChatModelProviders.OPENROUTERAI,
   embeddingModelKey: EmbeddingModels.OPENAI_EMBEDDING_SMALL + "|" + EmbeddingModelProviders.OPENAI,

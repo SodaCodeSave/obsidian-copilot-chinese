@@ -28,6 +28,7 @@ const EMBEDDING_PROVIDER_CONSTRUCTORS = {
   [EmbeddingModelProviders.OPENAI_FORMAT]: OpenAIEmbeddings,
   [EmbeddingModelProviders.SILICONFLOW]: CustomOpenAIEmbeddings,
   [EmbeddingModelProviders.MODELSCOPE]: CustomOpenAIEmbeddings,
+  [EmbeddingModelProviders.FREEQWEN3]: CustomOpenAIEmbeddings,
 } as const;
 
 type EmbeddingProviderConstructorMap = typeof EMBEDDING_PROVIDER_CONSTRUCTORS;
@@ -57,6 +58,7 @@ export default class EmbeddingManager {
     [EmbeddingModelProviders.OPENAI_FORMAT]: () => "default-key",
     [EmbeddingModelProviders.SILICONFLOW]: () => getSettings().siliconflowApiKey,
     [EmbeddingModelProviders.MODELSCOPE]: () => getSettings().modelscopeApiKey,
+    [EmbeddingModelProviders.FREEQWEN3]: () => getSettings().freeqwen3ApiKey,
   };
 
   private constructor() {
@@ -284,6 +286,15 @@ export default class EmbeddingManager {
         batchSize: getSettings().embeddingBatchSize,
         configuration: {
           baseURL: customModel.baseUrl || ProviderInfo[EmbeddingModelProviders.MODELSCOPE].host,
+          fetch: customModel.enableCors ? safeFetch : undefined,
+        },
+      },
+      [EmbeddingModelProviders.FREEQWEN3]: {
+        modelName,
+        apiKey: await getDecryptedKey(customModel.apiKey || settings.freeqwen3ApiKey),
+        batchSize: getSettings().embeddingBatchSize,
+        configuration: {
+          baseURL: customModel.baseUrl || ProviderInfo[EmbeddingModelProviders.FREEQWEN3].host,
           fetch: customModel.enableCors ? safeFetch : undefined,
         },
       },
