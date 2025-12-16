@@ -186,6 +186,7 @@ export enum ChatModelProviders {
   MODELSCOPE = "modelscope",
   SUANLI = "suanli",
   ALIYUN = "aliyun",
+  TENCENT_CLOUD = "tencent_cloud",
 }
 
 export enum ModelCapability {
@@ -395,6 +396,7 @@ export enum EmbeddingModelProviders {
   MODELSCOPE = "modelscope",
   SUANLI = "suanli",
   ALIYUN = "aliyun",
+  TENCENT_CLOUD = "tencent_cloud",
 }
 
 export enum EmbeddingModels {
@@ -539,6 +541,12 @@ export const ProviderInfo: Record<Provider, ProviderMetadata> = {
     keyManagementURL: "",
     listModelURL: "https://dashscope.aliyuncs.com/compatible-mode/v1/models",
   },
+  [ChatModelProviders.TENCENT_CLOUD]: {
+    label: "腾讯混元大模型",
+    host: "https://api.hunyuan.cloud.tencent.com/v1",
+    keyManagementURL: "",
+    listModelURL: "https://api.hunyuan.cloud.tencent.com/v1/models",
+  },
   [ChatModelProviders.OPENROUTERAI]: {
     label: "OpenRouter",
     host: "https://openrouter.ai/api/v1/",
@@ -672,6 +680,7 @@ export const ProviderSettingsKeyMap: Record<SettingKeyProviders, keyof CopilotSe
   modelscope: "modelscopeApiKey",
   suanli: "suanliApiKey",
   aliyun: "aliyunApiKey",
+  tencent_cloud: "tencent_cloudApiKey",
 };
 
 export enum VAULT_VECTOR_STORE_STRATEGY {
@@ -783,6 +792,7 @@ export const DEFAULT_SETTINGS: CopilotSettings = {
   amazonBedrockRegion: "",
   siliconflowApiKey: "",
   modelscopeApiKey: "",
+  tencent_cloudApiKey: "",
   suanliApiKey: "sk-W0rpStc95T7JVYVwDYc29IyirjtpPPby6SozFMQr17m8KWeo",
   aliyunApiKey: "",
   defaultChainType: ChainType.LLM_CHAIN,

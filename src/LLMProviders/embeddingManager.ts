@@ -30,6 +30,7 @@ const EMBEDDING_PROVIDER_CONSTRUCTORS = {
   [EmbeddingModelProviders.MODELSCOPE]: CustomOpenAIEmbeddings,
   [EmbeddingModelProviders.SUANLI]: CustomOpenAIEmbeddings,
   [EmbeddingModelProviders.ALIYUN]: CustomOpenAIEmbeddings,
+  [EmbeddingModelProviders.TENCENT_CLOUD]: CustomOpenAIEmbeddings,
 } as const;
 
 type EmbeddingProviderConstructorMap = typeof EMBEDDING_PROVIDER_CONSTRUCTORS;
@@ -61,6 +62,7 @@ export default class EmbeddingManager {
     [EmbeddingModelProviders.MODELSCOPE]: () => getSettings().modelscopeApiKey,
     [EmbeddingModelProviders.SUANLI]: () => getSettings().suanliApiKey,
     [EmbeddingModelProviders.ALIYUN]: () => getSettings().aliyunApiKey,
+    [EmbeddingModelProviders.TENCENT_CLOUD]: () => getSettings().tencent_cloudApiKey,
   };
 
   private constructor() {
@@ -307,6 +309,16 @@ export default class EmbeddingManager {
         configuration: {
           baseURL: customModel.baseUrl || ProviderInfo[EmbeddingModelProviders.ALIYUN].host,
           fetch: customModel.enableCors ? safeFetch : undefined,
+        },
+        [EmbeddingModelProviders.TENCENT_CLOUD]: {
+          modelName,
+          apiKey: await getDecryptedKey(customModel.apiKey || settings.tencent_cloudApiKey),
+          batchSize: getSettings().embeddingBatchSize,
+          configuration: {
+            baseURL:
+              customModel.baseUrl || ProviderInfo[EmbeddingModelProviders.TENCENT_CLOUD].host,
+            fetch: customModel.enableCors ? safeFetch : undefined,
+          },
         },
       },
     };

@@ -62,6 +62,7 @@ const CHAT_PROVIDER_CONSTRUCTORS = {
   [ChatModelProviders.MODELSCOPE]: ChatOpenAI,
   [ChatModelProviders.SUANLI]: ChatOpenAI,
   [ChatModelProviders.ALIYUN]: ChatOpenAI,
+  [ChatModelProviders.TENCENT_CLOUD]: ChatOpenAI,
 } as const;
 
 type ChatProviderConstructMap = typeof CHAT_PROVIDER_CONSTRUCTORS;
@@ -100,6 +101,7 @@ export default class ChatModelManager {
     [ChatModelProviders.MODELSCOPE]: () => getSettings().modelscopeApiKey,
     [ChatModelProviders.SUANLI]: () => getSettings().suanliApiKey,
     [ChatModelProviders.ALIYUN]: () => getSettings().aliyunApiKey,
+    [ChatModelProviders.TENCENT_CLOUD]: () => getSettings().tencent_cloudApiKey,
   } as const;
 
   private constructor() {
@@ -361,6 +363,21 @@ export default class ChatModelManager {
           baseURL: customModel.baseUrl || ProviderInfo[ChatModelProviders.DEEPSEEK].host,
           fetch: customModel.enableCors ? safeFetch : undefined,
         },
+      },
+      [ChatModelProviders.TENCENT_CLOUD]: {
+        modelName: modelName,
+        apiKey: await getDecryptedKey(customModel.apiKey || settings.tencent_cloudApiKey),
+        configuration: {
+          baseURL: customModel.baseUrl || ProviderInfo[ChatModelProviders.TENCENT_CLOUD].host,
+          fetch: customModel.enableCors ? safeFetch : undefined,
+          defaultHeaders: { "dangerously-allow-browser": true },
+        },
+        ...this.getOpenAISpecialConfig(
+          modelName,
+          customModel.maxTokens ?? settings.maxTokens,
+          customModel.temperature ?? settings.temperature,
+          customModel
+        ),
       },
       [ChatModelProviders.AMAZON_BEDROCK]: {} as BedrockChatModelFields,
       [ChatModelProviders.SUANLI]: {

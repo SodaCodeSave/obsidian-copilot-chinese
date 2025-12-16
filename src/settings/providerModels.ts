@@ -361,6 +361,7 @@ export interface ProviderResponseMap {
   [ChatModelProviders.AMAZON_BEDROCK]: unknown;
   [ChatModelProviders.MODELSCOPE]: OpenAIModelResponse;
   [ChatModelProviders.SUANLI]: OpenAIModelResponse;
+  [ChatModelProviders.TENCENT_CLOUD]: OpenAIModelResponse;
   [ChatModelProviders.ALIYUN]: OpenAIModelResponse;
 }
 

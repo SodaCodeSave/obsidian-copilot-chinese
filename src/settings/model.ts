@@ -68,6 +68,7 @@ export interface CopilotSettings {
   amazonBedrockRegion: string;
   siliconflowApiKey: string;
   modelscopeApiKey: string;
+  tencent_cloudApiKey: string;
   suanliApiKey: string;
   aliyunApiKey: string;
   defaultChainType: ChainType;
