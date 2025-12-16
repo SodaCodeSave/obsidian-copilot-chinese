@@ -62,6 +62,15 @@ export const QASettings: React.FC = () => {
             }}
           />
 
+          {/* Enable Inline Citations */}
+          <SettingItem
+            type="switch"
+            title="启用内联引用（实验性）"
+            description="启用后，AI响应将在文本中包含脚注样式的引用，并在末尾显示编号来源。这是一个实验性功能，可能并非所有模型都能正常工作。"
+            checked={settings.enableInlineCitations}
+            onCheckedChange={(checked) => updateSetting("enableInlineCitations", checked)}
+          />
+
           {/* Embedding Model - Always shown to reduce ambiguity */}
           <SettingItem
             type="select"

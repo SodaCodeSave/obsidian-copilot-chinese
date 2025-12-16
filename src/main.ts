@@ -2,7 +2,6 @@ import { BrevilabsClient } from "@/LLMProviders/brevilabsClient";
 import ProjectManager from "@/LLMProviders/projectManager";
 import { CustomModel, getCurrentProject, setSelectedTextContexts } from "@/aiParams";
 import { SelectedTextContext } from "@/types/message";
-import { AutocompleteService } from "@/autocomplete/autocompleteService";
 import { registerCommands } from "@/commands";
 import CopilotView from "@/components/CopilotView";
 import { APPLY_VIEW_TYPE, ApplyView } from "@/components/composer/ApplyView";
@@ -44,7 +43,6 @@ import {
   TFolder,
   WorkspaceLeaf,
 } from "obsidian";
-import { IntentAnalyzer } from "./LLMProviders/intentAnalyzer";
 import { ChatHistoryItem } from "@/components/chat-components/ChatHistoryPopover";
 import { extractChatTitle, extractChatDate } from "@/utils/chatHistoryUtils";
 import { v4 as uuidv4 } from "uuid";
@@ -60,7 +58,6 @@ export default class CopilotPlugin extends Plugin {
   fileParserManager: FileParserManager;
   customCommandRegister: CustomCommandRegister;
   settingsUnsubscriber?: () => void;
-  private autocompleteService: AutocompleteService;
   chatUIState: ChatUIState;
   userMemoryManager: UserMemoryManager;
   private selectionDebounceTimer?: number;
@@ -133,7 +130,7 @@ export default class CopilotPlugin extends Plugin {
       }
     });
 
-    IntentAnalyzer.initTools(this.app.vault);
+    // Tool initialization is now handled automatically in CopilotPlusChainRunner and AutonomousAgentChainRunner
 
     this.registerEvent(
       this.app.workspace.on("editor-menu", (menu: Menu) => {
@@ -161,8 +158,6 @@ export default class CopilotPlugin extends Plugin {
       })
     );
 
-    // Initialize autocomplete service
-    this.autocompleteService = AutocompleteService.getInstance(this);
     this.customCommandRegister = new CustomCommandRegister(this, this.app.vault);
     this.app.workspace.onLayoutReady(() => {
       this.customCommandRegister.initialize().then(migrateCommands).then(suggestDefaultCommands);
@@ -183,7 +178,6 @@ export default class CopilotPlugin extends Plugin {
 
     this.customCommandRegister.cleanup();
     this.settingsUnsubscriber?.();
-    this.autocompleteService?.destroy();
 
     // Cleanup selection handler
     this.cleanupSelectionHandler();

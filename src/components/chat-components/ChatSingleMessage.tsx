@@ -288,7 +288,7 @@ const ChatSingleMessage: React.FC<ChatSingleMessageProps> = ({
       };
 
       const processThinkSection = (content: string): string => {
-        return processCollapsibleSection(content, "think", "Thought for a while", "Thinking...");
+        return processCollapsibleSection(content, "think", "思考中", "正在思考...");
       };
 
       const processWriteToFileSection = (content: string): string => {
@@ -325,8 +325,8 @@ const ChatSingleMessage: React.FC<ChatSingleMessageProps> = ({
         return processCollapsibleSection(
           processedContent,
           "writeToFile",
-          "Generated new content",
-          "Generating changes..."
+          "生成新内容",
+          "正在生成更改..."
         );
       };
 
@@ -379,7 +379,10 @@ const ChatSingleMessage: React.FC<ChatSingleMessageProps> = ({
       const writeToFileSectionProcessed = processWriteToFileSection(thinkSectionProcessed);
 
       // Transform markdown sources section into HTML structure
-      const sourcesSectionProcessed = processInlineCitations(writeToFileSectionProcessed);
+      const sourcesSectionProcessed = processInlineCitations(
+        writeToFileSectionProcessed,
+        settings.enableInlineCitations
+      );
 
       // Transform [[link]] to clickable format but exclude ![[]] image links
       const noteLinksProcessed = replaceLinks(
@@ -391,7 +394,7 @@ const ChatSingleMessage: React.FC<ChatSingleMessageProps> = ({
 
       return noteLinksProcessed;
     },
-    [app, isStreaming, shouldProcessThinkBlocks]
+    [app, isStreaming, shouldProcessThinkBlocks, settings.enableInlineCitations]
   );
 
   useEffect(() => {
