@@ -60,7 +60,8 @@ const CHAT_PROVIDER_CONSTRUCTORS = {
   [ChatModelProviders.DEEPSEEK]: ChatDeepSeek,
   [ChatModelProviders.AMAZON_BEDROCK]: BedrockChatModel,
   [ChatModelProviders.MODELSCOPE]: ChatOpenAI,
-  [ChatModelProviders.FREEQWEN3]: ChatOpenAI,
+  [ChatModelProviders.SUANLI]: ChatOpenAI,
+  [ChatModelProviders.ALIYUN]: ChatOpenAI,
 } as const;
 
 type ChatProviderConstructMap = typeof CHAT_PROVIDER_CONSTRUCTORS;
@@ -97,7 +98,8 @@ export default class ChatModelManager {
     [ChatModelProviders.AMAZON_BEDROCK]: () => getSettings().amazonBedrockApiKey,
     [ChatModelProviders.SILICONFLOW]: () => getSettings().siliconflowApiKey,
     [ChatModelProviders.MODELSCOPE]: () => getSettings().modelscopeApiKey,
-    [ChatModelProviders.FREEQWEN3]: () => getSettings().freeqwen3ApiKey,
+    [ChatModelProviders.SUANLI]: () => getSettings().suanliApiKey,
+    [ChatModelProviders.ALIYUN]: () => getSettings().aliyunApiKey,
   } as const;
 
   private constructor() {
@@ -361,11 +363,26 @@ export default class ChatModelManager {
         },
       },
       [ChatModelProviders.AMAZON_BEDROCK]: {} as BedrockChatModelFields,
-      [ChatModelProviders.FREEQWEN3]: {
+      [ChatModelProviders.SUANLI]: {
         modelName: modelName,
-        apiKey: await getDecryptedKey(customModel.apiKey || settings.freeqwen3ApiKey),
+        apiKey: await getDecryptedKey(customModel.apiKey || settings.suanliApiKey),
         configuration: {
-          baseURL: customModel.baseUrl || ProviderInfo[ChatModelProviders.FREEQWEN3].host,
+          baseURL: customModel.baseUrl || ProviderInfo[ChatModelProviders.SUANLI].host,
+          fetch: customModel.enableCors ? safeFetch : undefined,
+          defaultHeaders: { "dangerously-allow-browser": true },
+        },
+        ...this.getOpenAISpecialConfig(
+          modelName,
+          customModel.maxTokens ?? settings.maxTokens,
+          customModel.temperature ?? settings.temperature,
+          customModel
+        ),
+      },
+      [ChatModelProviders.ALIYUN]: {
+        modelName: modelName,
+        apiKey: await getDecryptedKey(customModel.apiKey || settings.aliyunApiKey),
+        configuration: {
+          baseURL: customModel.baseUrl || ProviderInfo[ChatModelProviders.ALIYUN].host,
           fetch: customModel.enableCors ? safeFetch : undefined,
           defaultHeaders: { "dangerously-allow-browser": true },
         },

@@ -28,7 +28,8 @@ const EMBEDDING_PROVIDER_CONSTRUCTORS = {
   [EmbeddingModelProviders.OPENAI_FORMAT]: OpenAIEmbeddings,
   [EmbeddingModelProviders.SILICONFLOW]: CustomOpenAIEmbeddings,
   [EmbeddingModelProviders.MODELSCOPE]: CustomOpenAIEmbeddings,
-  [EmbeddingModelProviders.FREEQWEN3]: CustomOpenAIEmbeddings,
+  [EmbeddingModelProviders.SUANLI]: CustomOpenAIEmbeddings,
+  [EmbeddingModelProviders.ALIYUN]: CustomOpenAIEmbeddings,
 } as const;
 
 type EmbeddingProviderConstructorMap = typeof EMBEDDING_PROVIDER_CONSTRUCTORS;
@@ -58,7 +59,8 @@ export default class EmbeddingManager {
     [EmbeddingModelProviders.OPENAI_FORMAT]: () => "default-key",
     [EmbeddingModelProviders.SILICONFLOW]: () => getSettings().siliconflowApiKey,
     [EmbeddingModelProviders.MODELSCOPE]: () => getSettings().modelscopeApiKey,
-    [EmbeddingModelProviders.FREEQWEN3]: () => getSettings().freeqwen3ApiKey,
+    [EmbeddingModelProviders.SUANLI]: () => getSettings().suanliApiKey,
+    [EmbeddingModelProviders.ALIYUN]: () => getSettings().aliyunApiKey,
   };
 
   private constructor() {
@@ -289,12 +291,21 @@ export default class EmbeddingManager {
           fetch: customModel.enableCors ? safeFetch : undefined,
         },
       },
-      [EmbeddingModelProviders.FREEQWEN3]: {
+      [EmbeddingModelProviders.SUANLI]: {
         modelName,
-        apiKey: await getDecryptedKey(customModel.apiKey || settings.freeqwen3ApiKey),
+        apiKey: await getDecryptedKey(customModel.apiKey || settings.suanliApiKey),
         batchSize: getSettings().embeddingBatchSize,
         configuration: {
-          baseURL: customModel.baseUrl || ProviderInfo[EmbeddingModelProviders.FREEQWEN3].host,
+          baseURL: customModel.baseUrl || ProviderInfo[EmbeddingModelProviders.SUANLI].host,
+          fetch: customModel.enableCors ? safeFetch : undefined,
+        },
+      },
+      [EmbeddingModelProviders.ALIYUN]: {
+        modelName,
+        apiKey: await getDecryptedKey(customModel.apiKey || settings.aliyunApiKey),
+        batchSize: getSettings().embeddingBatchSize,
+        configuration: {
+          baseURL: customModel.baseUrl || ProviderInfo[EmbeddingModelProviders.ALIYUN].host,
           fetch: customModel.enableCors ? safeFetch : undefined,
         },
       },
